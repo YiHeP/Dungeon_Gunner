@@ -21,7 +21,7 @@ MonoBehaviour:
   doorwayList:
   - position: {x: -1, y: 55}
     orientation: 0
-    doorPrefab: {fileID: 0}
+    doorPrefab: {fileID: 7384994920495050737, guid: d43db3c72ff5ff84fbbd166b556fa9e4, type: 3}
     doorwayStartCopyPosition: {x: -4, y: 55}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 9
@@ -29,7 +29,7 @@ MonoBehaviour:
     isUnavailable: 0
   - position: {x: -1, y: 1}
     orientation: 2
-    doorPrefab: {fileID: 0}
+    doorPrefab: {fileID: 7384994920495050737, guid: d43db3c72ff5ff84fbbd166b556fa9e4, type: 3}
     doorwayStartCopyPosition: {x: -4, y: 5}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 5
@@ -37,7 +37,7 @@ MonoBehaviour:
     isUnavailable: 0
   - position: {x: 20, y: 28}
     orientation: 1
-    doorPrefab: {fileID: 0}
+    doorPrefab: {fileID: 7796078929202479714, guid: cb36ae3784e9ce147b39dc160051ac78, type: 3}
     doorwayStartCopyPosition: {x: 17, y: 34}
     doorwayCopyTileWidth: 4
     doorwayCopyTileHeight: 8
@@ -45,7 +45,7 @@ MonoBehaviour:
     isUnavailable: 0
   - position: {x: -22, y: 28}
     orientation: 3
-    doorPrefab: {fileID: 0}
+    doorPrefab: {fileID: 7796078929202479714, guid: cb36ae3784e9ce147b39dc160051ac78, type: 3}
     doorwayStartCopyPosition: {x: -22, y: 34}
     doorwayCopyTileWidth: 4
     doorwayCopyTileHeight: 8
