@@ -4,6 +4,10 @@ using UnityEngine;
 
 public static class Settings
 {
+    #region 单位
+    public const float pixelsPerUnit = 16f;
+    public const float tileSizePixels = 16f;
+    #endregion
 
     #region 地牢规模
     public const int maxDungeonRebuildAttemptsForRoomNodeGraph = 1000;
