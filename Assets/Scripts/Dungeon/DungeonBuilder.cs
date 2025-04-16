@@ -13,13 +13,21 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
     private RoomNodeTypeListSO roomNodeTypeList;
     private bool dungeonBuilderSuccessful;
 
+    private void OnEnable()
+    {
+        GameResources.Instance.dimmedMaterial.SetFloat("Alpha_Slider", 0f);
+    }
+
+    private void OnDisable()
+    {
+        GameResources.Instance.dimmedMaterial.SetFloat("Alpha_Slider", 1f);
+    }
+
     protected override void Awake()
     {
         base.Awake();
         //读取所有房间类型
         LoadRoomNodeTypeList();
-
-        GameResources.Instance.dimmedMaterial.SetFloat("Alpha_Slider", 1f);
     }
 
     //读取房间类型列表
@@ -33,11 +41,11 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
     {
         roomTemplateList = currentDungeonLevel.roomTemplateList;
 
-        LoadRoomTemplateIntoDictionary();
+        LoadRoomTemplateIntoDictionary();//加载房间模块
 
         dungeonBuilderSuccessful = false;
 
-        int dungeonBuildAttempts = 0;
+        int dungeonBuildAttempts = 0;//建造次数
 
         while(!dungeonBuilderSuccessful || dungeonBuildAttempts < Settings.maxDungeonBuildAttempts)
         {

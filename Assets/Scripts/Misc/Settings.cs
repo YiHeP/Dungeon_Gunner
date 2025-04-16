@@ -15,6 +15,7 @@ public static class Settings
     #endregion
 
     #region ∑øº‰…Ë÷√
+    public const float fadeInTime = 0.5f;
     public const int MaxChildCorridors = 3;
     #endregion
 

@@ -25,8 +25,9 @@ public class Door : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
         doorCollider.enabled = false;
+
+        animator = GetComponent<Animator>();
         doorTrigger = GetComponent<BoxCollider2D>();
 
     }

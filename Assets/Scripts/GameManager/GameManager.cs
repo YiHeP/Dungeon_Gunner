@@ -89,7 +89,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         {
             Debug.Log("ππΩ®µÿ¿Œ ß∞‹");
         }
-
+        StaticEventHandler.CallRoomChangedEvent(currentRoom);
         player.gameObject.transform.position = new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f, (currentRoom
             .lowerBounds.y + currentRoom.upperBounds.y), 0f);
         player.gameObject.transform.position = HelpUtilities.GetSpawnPositionNearestToPlayer(player.gameObject.transform.position);

@@ -45,4 +45,26 @@ public class GameResources : MonoBehaviour
     #endregion
     public Material dimmedMaterial;
 
+    #region Tooltip
+    [Tooltip("精灵光照默认材质")]
+    #endregion
+    public Material litMaterial;
+
+    #region Tooltip
+    [Tooltip("使用 Variable lit 着色器填充")]
+    #endregion
+    public Shader variableLitShader;
+
+    #region Validation
+#if UNITY_EDITOR
+    public void OnValidate()
+    {
+        HelpUtilities.ValidateCheckNullValues(this, nameof(roomNodeTypelist), roomNodeTypelist);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(currentPlayerSO), currentPlayerSO);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(dimmedMaterial), dimmedMaterial);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(variableLitShader), variableLitShader);
+    }
+#endif
+    #endregion
+
 }
