@@ -42,4 +42,8 @@ public static class Settings
     public const string playerTag = "Player";
     public const string playerWeaponTag = "playerWeapon";
     #endregion
+
+    #region ¿ª»ð¿ØÖÆ
+    public const float useAimAngleDistance = 3.5f; 
+    #endregion
 }

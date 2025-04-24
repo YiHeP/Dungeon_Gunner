@@ -33,6 +33,21 @@ public class PlayerDetailsSO : ScriptableObject
     #endregion
     public int PlayerHealthAmount;
 
+    #region Header 武器
+    [Space(10)]
+    [Header("武器")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("玩家的初始武器")]
+    #endregion
+    public WeaponsDetailsSO staringWeapon;
+
+    #region Tooltip
+    [Tooltip("填入玩家的初始武器列表")]
+    #endregion
+    public List<WeaponsDetailsSO> stasrtingWeaponList;
+
     #region Header 其余
     [Space(10)]
     [Header("其余")]
@@ -57,6 +72,8 @@ public class PlayerDetailsSO : ScriptableObject
         HelpUtilities.ValidateCheckNullValues(this, nameof(PlayerMiniMapIcon), PlayerMiniMapIcon);
         HelpUtilities.ValidateCheckNullValues(this, nameof(PlayerHandSprite), PlayerHandSprite);
         HelpUtilities.ValidateCheckNullValues(this, nameof(runtimeAnimatorController), runtimeAnimatorController);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(staringWeapon),staringWeapon);
+        HelpUtilities.ValidateCheckEnumerableValues(this,nameof(stasrtingWeaponList), stasrtingWeaponList);
     }
 #endif
     #endregion

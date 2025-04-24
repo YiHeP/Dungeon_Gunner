@@ -27,10 +27,10 @@ public class WeaponsDetailsSO : ScriptableObject
     [Tooltip("武器的射击位置")]
     #endregion
     public Vector3 weaponShootPosition;
-    //#region Tooltip
-    //[Tooltip("武器现在所用弹药")]
-    //endregion
-    //public AmmoDetailSO weaponCurrentAmmo;
+    #region Tooltip
+    [Tooltip("武器现在所用弹药")]
+    #endregion
+    public AmmoDetailSO weaponCurrentAmmo;
 
     #region 武器的操作值
     [Space(10)]
@@ -76,7 +76,7 @@ public class WeaponsDetailsSO : ScriptableObject
     private void OnValidate()
     {
         HelpUtilities.ValidateCheckEmptyString(this, nameof(weaponName), weaponName);
-        //HelpUtilities.ValidateCheckNullValues(this, nameof(weaponCurrentAmmo), weaponCurrentAmmo);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(weaponCurrentAmmo), weaponCurrentAmmo);
         HelpUtilities.ValidateCheckPositiveValues(this, nameof(weaponFireRate), weaponFireRate, false);
         HelpUtilities.ValidateCheckPositiveValues(this, nameof(weaponPrechargeTime), weaponPrechargeTime, true);
 
