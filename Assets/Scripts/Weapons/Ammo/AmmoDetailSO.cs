@@ -60,7 +60,7 @@ public class AmmoDetailSO : ScriptableObject
     #region Tooltip
     [Tooltip("子弹的最低速度，子弹速度将在随机在最低和最高之间")]
     #endregion
-    public float ammoSpeeedMin = 20f;
+    public float ammoSpeedMin = 20f;
 
     #region Tooltip
     [Tooltip("子弹的最高速度，子弹速度将在随机在最低和最高之间")]
@@ -158,7 +158,7 @@ public class AmmoDetailSO : ScriptableObject
         if(ammoChargeTime > 0f)
             HelpUtilities.ValidateCheckNullValues(this,nameof(ammoChargeMaterial),ammoChargeMaterial);
         HelpUtilities.ValidateCheckPositiveValues(this,nameof(ammoDamage),ammoDamage,false);
-        HelpUtilities.ValidateCheckPositiveRange(this, nameof(ammoSpeeedMin), ammoSpeeedMin, nameof(ammoSpeedMax), ammoSpeedMax, false);
+        HelpUtilities.ValidateCheckPositiveRange(this, nameof(ammoSpeedMin), ammoSpeedMin, nameof(ammoSpeedMax), ammoSpeedMax, false);
         HelpUtilities.ValidateCheckPositiveValues(this, nameof(ammoRange), ammoRange, false);
         HelpUtilities.ValidateCheckPositiveRange(this,nameof(ammoSpreadMin),ammoSpreadMin,nameof(ammoSpreadMax),ammoSpreadMax,true);
         HelpUtilities.ValidateCheckPositiveRange(this,nameof(ammoSpawnAmoutMin),ammoSpawnAmoutMin,nameof(ammoSpawnAmoutMax),ammoSpawnAmoutMax,false);
