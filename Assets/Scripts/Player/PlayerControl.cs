@@ -137,6 +137,7 @@ public class PlayerControl : MonoBehaviour
         AimDirection aimDirection;
         AimWeaponInput(out weaponDirection,out weaponAngleDegrees,out playerAngleDegrees,out aimDirection);
         FireWeaponInput(weaponDirection, weaponAngleDegrees, playerAngleDegrees, aimDirection);
+        ReloadWeaponInput();
     }
 
     private void AimWeaponInput(out Vector3 weaponDirection, out float weaponAngleDegrees, out float playerAngleDegrees, out 
@@ -171,6 +172,22 @@ public class PlayerControl : MonoBehaviour
         {
             playerRollCooldownTimer -= Time.deltaTime;
         }
+    }
+
+    private void ReloadWeaponInput()
+    {
+       Weapon currentWeapon = player.activeWeapon.GetCurrentWeapon();
+        if (currentWeapon.isWeaponReloading) return;//正在装弹药中
+
+        if (currentWeapon.weaponRemainingAmmo < currentWeapon.weaponsDetails.weaponClipAmmoCapacity && !currentWeapon.weaponsDetails.hasInfiniteAmmo)
+            return;
+        if (currentWeapon.weaponClipRemainingAmmo == currentWeapon.weaponsDetails.weaponClipAmmoCapacity)
+            return;
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            player.reloadWeaponEvent.CallReloadWeaponEvent(player.activeWeapon.GetCurrentWeapon(), 0);
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

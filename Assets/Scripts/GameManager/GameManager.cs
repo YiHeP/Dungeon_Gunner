@@ -69,10 +69,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         HandleGameState();
 
         //≤‚ ‘ π”√
-        if(Input.GetKeyUp(KeyCode.P))
-        {
-            gameState = GameState.gameStarted;
-        }
+        //if(Input.GetKeyUp(KeyCode.P))
+        //{
+        //    gameState = GameState.gameStarted;
+        //}
+
+
     }
 
     private void HandleGameState()

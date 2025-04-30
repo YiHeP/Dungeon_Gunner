@@ -17,6 +17,9 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(WeaponFireEvent))]
 [RequireComponent(typeof(MovementToPosition))]
 [RequireComponent(typeof(FireWeapon))]
+[RequireComponent(typeof(ReloadWeaponEvent))]
+[RequireComponent(typeof(WeaponReloadEvent))]
+[RequireComponent(typeof(ReloadWeapon))]
 [RequireComponent(typeof(Idle))]
 [RequireComponent(typeof(IdleEvent))]
 [RequireComponent(typeof(AimWeapon))]
@@ -45,6 +48,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
     [HideInInspector] public FireWeaponEvent fireWeaponEvent;
     [HideInInspector] public WeaponFireEvent weaponFireEvent;
+    [HideInInspector] public ReloadWeaponEvent reloadWeaponEvent;
+    [HideInInspector] public WeaponReloadEvent weaponReloadEvent;
 
     public List<Weapon> weaponList = new List<Weapon>();
     public void Awake()
@@ -60,6 +65,8 @@ public class Player : MonoBehaviour
         activeWeapon = GetComponent<ActiveWeapon>();
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
         weaponFireEvent = GetComponent<WeaponFireEvent>();
+        reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
+        weaponReloadEvent = GetComponent<WeaponReloadEvent>();
     }
 
     public void Initialize(PlayerDetailsSO playerDetails)
@@ -77,11 +84,11 @@ public class Player : MonoBehaviour
 
         foreach(WeaponsDetailsSO weaponsDetails in  playerDetails.stasrtingWeaponList)
         {
-            AddWeaponToPlayere(weaponsDetails);
+            AddWeaponToPlayer(weaponsDetails);
         }
     }
 
-    public Weapon AddWeaponToPlayere(WeaponsDetailsSO weaponsDetails)
+    public Weapon AddWeaponToPlayer(WeaponsDetailsSO weaponsDetails)
     {
         Weapon weapon = new Weapon() { weaponsDetails = weaponsDetails,weaponReloadTimer = 0f,weaponClipRemainingAmmo = 
             weaponsDetails.weaponClipAmmoCapacity,weaponRemainingAmmo = weaponsDetails.weaponAmmoCapacity,isWeaponReloading = false};

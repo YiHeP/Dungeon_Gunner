@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(ActiveWeapon))]
 [RequireComponent(typeof(FireWeaponEvent))]
 [RequireComponent(typeof(WeaponFireEvent))]
+[RequireComponent(typeof(ReloadWeaponEvent))]
 [DisallowMultipleComponent]
 public class FireWeapon : MonoBehaviour
 {
@@ -12,12 +13,14 @@ public class FireWeapon : MonoBehaviour
     private ActiveWeapon activeWeapon;
     private FireWeaponEvent fireWeaponEvent;
     private WeaponFireEvent weaponFireEvent;
+    private ReloadWeaponEvent reloadWeaponEvent;
 
     private void Awake()
     {
         activeWeapon = GetComponent<ActiveWeapon>();
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
         weaponFireEvent = GetComponent<WeaponFireEvent>();
+        reloadWeaponEvent = GetComponent<ReloadWeaponEvent>(); 
     }
 
     private void OnEnable()
@@ -69,6 +72,7 @@ public class FireWeapon : MonoBehaviour
         }
         if(activeWeapon.GetCurrentWeapon().weaponClipRemainingAmmo <= 0 && !activeWeapon.GetCurrentWeapon().weaponsDetails.hasInfiniteClipCapacity)
         {
+            reloadWeaponEvent.CallReloadWeaponEvent(activeWeapon.GetCurrentWeapon(), 0);
             return false;
         }
         return true;
