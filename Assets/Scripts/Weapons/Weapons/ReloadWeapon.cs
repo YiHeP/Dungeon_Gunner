@@ -73,11 +73,11 @@ public class ReloadWeapon : MonoBehaviour
             }
         }
 
-        if(weapon.weaponsDetails.hasInfiniteAmmo)
+        if(weapon.weaponsDetails.hasInfiniteAmmo)//ÎÞÏÞµ¯Ò©
         {
             weapon.weaponClipRemainingAmmo = weapon.weaponsDetails.weaponClipAmmoCapacity;
         }
-        else if(weapon.weaponRemainingAmmo >= weapon.weaponsDetails.weaponAmmoCapacity)
+        else if(weapon.weaponRemainingAmmo >= weapon.weaponsDetails.weaponClipAmmoCapacity)
         {
             weapon.weaponClipRemainingAmmo = weapon.weaponsDetails.weaponClipAmmoCapacity;
         }
