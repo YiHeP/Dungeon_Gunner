@@ -7,7 +7,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class MovementByVelocity : MonoBehaviour
 {
-    private Rigidbody2D rigidbody2D;
+    private new Rigidbody2D rigidbody2D;
     private MovementByVelocityEvent movementByVelocityEvent;
 
     private void Awake()

@@ -55,6 +55,16 @@ public class GameResources : MonoBehaviour
     #endregion
     public Shader variableLitShader;
 
+    #region Header UI
+    [Space(10)]
+    [Header("UI")]
+    #endregion
+    #region Tooltip
+    [Tooltip("ÌîÈë×Óµ¯Í¼±ê")]
+    #endregion
+    public GameObject ammoIconPrefab;
+
+
     #region Validation
 #if UNITY_EDITOR
     public void OnValidate()
@@ -63,6 +73,7 @@ public class GameResources : MonoBehaviour
         HelpUtilities.ValidateCheckNullValues(this, nameof(currentPlayerSO), currentPlayerSO);
         HelpUtilities.ValidateCheckNullValues(this, nameof(dimmedMaterial), dimmedMaterial);
         HelpUtilities.ValidateCheckNullValues(this, nameof(variableLitShader), variableLitShader);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(ammoIconPrefab), ammoIconPrefab);
     }
 #endif
     #endregion

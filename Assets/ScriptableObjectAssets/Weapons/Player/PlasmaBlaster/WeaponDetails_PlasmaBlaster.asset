@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902bc8a4da199ba42a413d6a246c8d41, type: 3}
   m_Name: WeaponDetails_PlasmaBlaster
   m_EditorClassIdentifier: 
-  weaponName: "\u6C99\u6F20\u4E4B\u9E70"
-  weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
-  weaponShootPosition: {x: 1.115, y: 0.277, z: 0}
-  weaponCurrentAmmo: {fileID: 11400000, guid: bc8c8b8488a257e4bbfc4dd15c0fc2af, type: 2}
+  weaponName: "\u79BB\u5B50\u7206\u67AA"
+  weaponSprite: {fileID: 21300000, guid: a9d9372b640a67a4dae1cdbb59e3b919, type: 3}
+  weaponShootPosition: {x: 1.245, y: 0.277, z: 0}
+  weaponCurrentAmmo: {fileID: 11400000, guid: 7e583c92599ab084ab7510d5ec8f37a7, type: 2}
   hasInfiniteAmmo: 1
   hasInfiniteClipCapacity: 0
-  weaponClipAmmoCapacity: 10
+  weaponClipAmmoCapacity: 6
   weaponAmmoCapacity: 0
-  weaponFireRate: 0.25
-  weaponPrechargeTime: 0
-  weaponReloadTime: 1.2
+  weaponFireRate: 0.5
+  weaponPrechargeTime: 0.2
+  weaponReloadTime: 1

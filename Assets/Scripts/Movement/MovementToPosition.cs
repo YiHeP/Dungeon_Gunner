@@ -8,7 +8,7 @@ using UnityEngine;
 public class MovementToPosition : MonoBehaviour
 {
     public MovementToPositionEvent movementToPositionEvent;
-    public Rigidbody2D rigidbody2D;
+    public new Rigidbody2D rigidbody2D;
 
     public void Awake()
     {

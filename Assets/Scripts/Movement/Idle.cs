@@ -7,7 +7,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Idle : MonoBehaviour
 {
-    private Rigidbody2D rigidbody2D;
+    private new Rigidbody2D rigidbody2D;
     private IdleEvent idleEvent;
 
     private void Awake()

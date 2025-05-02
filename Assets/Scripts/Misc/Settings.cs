@@ -44,6 +44,10 @@ public static class Settings
     #endregion
 
     #region 开火控制
-    public const float useAimAngleDistance = 3.5f; 
+    public const float useAimAngleDistance = 3.5f;
+    #endregion
+
+    #region UI 参数
+    public const float uiAmmoIconSpacing = 4f; 
     #endregion
 }
