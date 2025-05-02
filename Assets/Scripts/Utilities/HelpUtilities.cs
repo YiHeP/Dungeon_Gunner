@@ -162,7 +162,7 @@ public class HelpUtilities
         {
             if (valueToCheck <= 0)
             {
-                Debug.Log(filename + "必须包含正值=在物体:" + thisObject.name.ToString());
+                Debug.Log(filename + "必须包含正值在物体:" + thisObject.name.ToString());
                 error = true;
             }
         }
