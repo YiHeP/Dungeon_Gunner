@@ -52,6 +52,7 @@ public class PlayerControl : MonoBehaviour
         {
             currentWeaponIndex = index;
             player.setActiveWeaponEvent.CallSetActiveWeaponEvent(player.weaponList[index - 1]);
+            leftMouseDownPreviousFrame = false;
         }
     }
 
@@ -175,12 +176,12 @@ public class PlayerControl : MonoBehaviour
 
     private void SwitchWeaponInput()
     {
-        if(Input.mouseScrollDelta.y < 0)
+        if(Input.mouseScrollDelta.y > 0)
         {
             PreviousWeapon();
         }
 
-        if(Input.mouseScrollDelta.y > 0)
+        if(Input.mouseScrollDelta.y < 0)
         {
             NextWeapon();
         }
