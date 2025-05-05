@@ -73,6 +73,10 @@ public class GameResources : MonoBehaviour
     [Tooltip("填充声音混合控制器组")]
     #endregion
     public AudioMixerGroup soundMasterMixrGroup;
+    #region Tooltip
+    [Tooltip("门开关的音效")]
+    #endregion
+    public SoundEffectSO doorOpenCloseSoundEffect;
 
     #region Validation
 #if UNITY_EDITOR
@@ -83,6 +87,8 @@ public class GameResources : MonoBehaviour
         HelpUtilities.ValidateCheckNullValues(this, nameof(dimmedMaterial), dimmedMaterial);
         HelpUtilities.ValidateCheckNullValues(this, nameof(variableLitShader), variableLitShader);
         HelpUtilities.ValidateCheckNullValues(this, nameof(ammoIconPrefab), ammoIconPrefab);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(soundMasterMixrGroup), soundMasterMixrGroup);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(doorOpenCloseSoundEffect), doorOpenCloseSoundEffect);
     }
 #endif
     #endregion
