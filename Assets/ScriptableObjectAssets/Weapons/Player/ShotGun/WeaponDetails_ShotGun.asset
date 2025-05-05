@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 902bc8a4da199ba42a413d6a246c8d41, type: 3}
-  m_Name: WeaponDetails_RocketLauncher
+  m_Name: WeaponDetails_ShotGun
   m_EditorClassIdentifier: 
-  weaponName: "\u706B\u7BAD\u7B52"
-  weaponSprite: {fileID: 21300000, guid: f4a1e113145591f45bfacfc7d7bf80c5, type: 3}
-  weaponShootPosition: {x: 1.547, y: 0.306, z: 0}
-  weaponCurrentAmmo: {fileID: 11400000, guid: a6b1ef476caa1ac4599f6d95e6a121c4, type: 2}
+  weaponName: "\u897F\u90E8\u9057\u9B42"
+  weaponSprite: {fileID: 21300000, guid: 29bc0107bc11191468ed7d175994fb5b, type: 3}
+  weaponShootPosition: {x: 1.15, y: 0.329, z: 0}
+  weaponCurrentAmmo: {fileID: 11400000, guid: 7f38541b8f6682440b1105a0c26aa9a4, type: 2}
   hasInfiniteAmmo: 0
   hasInfiniteClipCapacity: 0
-  weaponClipAmmoCapacity: 2
-  weaponAmmoCapacity: 15
-  weaponFireRate: 1
+  weaponClipAmmoCapacity: 6
+  weaponAmmoCapacity: 40
+  weaponFireRate: 0.3
   weaponPrechargeTime: 0
-  weaponReloadTime: 2.5
+  weaponReloadTime: 1.8
