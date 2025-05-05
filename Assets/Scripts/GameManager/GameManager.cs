@@ -117,6 +117,11 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         return currentRoom;
     }
 
+    public Sprite GetMiniMapPlayer()
+    {
+        return playerDetails.PlayerMiniMapIcon;
+    }
+
     #region Validation
 #if UNITY_EDITOR
 
