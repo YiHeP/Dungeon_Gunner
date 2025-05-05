@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902bc8a4da199ba42a413d6a246c8d41, type: 3}
   m_Name: WeaponDetails_ShotGun
   m_EditorClassIdentifier: 
-  weaponName: "\u897F\u90E8\u9057\u9B42"
-  weaponSprite: {fileID: 21300000, guid: 29bc0107bc11191468ed7d175994fb5b, type: 3}
-  weaponShootPosition: {x: 1.15, y: 0.329, z: 0}
-  weaponCurrentAmmo: {fileID: 11400000, guid: 7f38541b8f6682440b1105a0c26aa9a4, type: 2}
+  weaponName: "\u9730\u5F39\u67AA"
+  weaponSprite: {fileID: 21300000, guid: 957e7c5a4532c7b4fa28cd31bf5aee5d, type: 3}
+  weaponShootPosition: {x: 1.376, y: 0.208, z: 0}
+  weaponCurrentAmmo: {fileID: 11400000, guid: 14381e2b171523c4d8fb7e0e6ec1425c, type: 2}
   hasInfiniteAmmo: 0
   hasInfiniteClipCapacity: 0
-  weaponClipAmmoCapacity: 6
-  weaponAmmoCapacity: 40
-  weaponFireRate: 0.3
+  weaponClipAmmoCapacity: 4
+  weaponAmmoCapacity: 30
+  weaponFireRate: 0.4
   weaponPrechargeTime: 0
-  weaponReloadTime: 1.8
+  weaponReloadTime: 1
+  weaponFiringSoundEffect: {fileID: 0}
+  wepaonReloadingSoundEffect: {fileID: 0}

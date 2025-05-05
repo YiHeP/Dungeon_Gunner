@@ -71,6 +71,16 @@ public class WeaponsDetailsSO : ScriptableObject
     #endregion
     public float weaponReloadTime = 0f;
 
+    #region Tooltip
+    [Tooltip("ÎäÆ÷Éä»÷ÒôĞ§")]
+    #endregion
+    public SoundEffectSO weaponFiringSoundEffect;
+
+    #region Tooltip
+    [Tooltip("ÎäÆ÷×°ÌîÒôĞ§")]
+    #endregion
+    public SoundEffectSO wepaonReloadingSoundEffect;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()

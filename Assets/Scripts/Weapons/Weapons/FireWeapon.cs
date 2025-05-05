@@ -145,6 +145,16 @@ public class FireWeapon : MonoBehaviour
             activeWeapon.GetCurrentWeapon().weaponClipRemainingAmmo--;
         }
         weaponFireEvent.CallWeaponFireEvent(activeWeapon.GetCurrentWeapon());//更新ui界面
+
+        WeaponSoundEffect();
+    }
+
+    private void WeaponSoundEffect()
+    {
+        if(activeWeapon.GetCurrentWeapon().weaponsDetails.weaponFiringSoundEffect !=  null)
+        {
+            SoundEffectManager.Instance.PlaySoundEffect(activeWeapon.GetCurrentWeapon().weaponsDetails.weaponFiringSoundEffect);
+        }
     }
 
     private void RestartCoolDownTimer()

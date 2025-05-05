@@ -50,6 +50,11 @@ public class ReloadWeapon : MonoBehaviour
 
     public IEnumerator ReloadWeaponRoutine(Weapon weapon, int  topUpAmmoPercent)
     {
+        if(weapon.weaponsDetails.wepaonReloadingSoundEffect != null)
+        {
+            SoundEffectManager.Instance.PlaySoundEffect(weapon.weaponsDetails.wepaonReloadingSoundEffect);
+        }
+
         weapon.isWeaponReloading = true;
         while(weapon.weaponReloadTimer < weapon.weaponsDetails.weaponReloadTime)
         {
