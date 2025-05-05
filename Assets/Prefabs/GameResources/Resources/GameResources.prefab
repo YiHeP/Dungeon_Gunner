@@ -50,3 +50,4 @@ MonoBehaviour:
   litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   variableLitShader: {fileID: -6465566751694194690, guid: 7f02559436836d248ae39aaac3f41b95, type: 3}
   ammoIconPrefab: {fileID: 1553259906665990448, guid: 61992afe2c88e454daa078adadf43b48, type: 3}
+  soundMasterMixrGroup: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
