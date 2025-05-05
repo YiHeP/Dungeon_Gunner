@@ -102,22 +102,49 @@ public class FireWeapon : MonoBehaviour
 
          if(currentAmmo != null)
         {
-            GameObject ammoPrefab = currentAmmo.ammoPrefabArray[Random.Range(0,currentAmmo.ammoPrefabArray.Length)];
+            StartCoroutine(FireAmmoRoutine(currentAmmo,aimAngle,weaponAngle,weaponAimDirectionVector));
+        }
+
+    }
+
+    private IEnumerator FireAmmoRoutine(AmmoDetailSO currentAmmo, float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector)
+    {
+        int ammoCounter = 0;
+
+        int ammoPerShot = Random.Range(currentAmmo.ammoSpawnAmoutMin, currentAmmo.ammoSpawnAmoutMax + 1);
+
+        float ammoSpawnInterval;
+
+        if(ammoPerShot > 1)
+        {
+            ammoSpawnInterval = Random.Range(currentAmmo.ammoSpawnIntervalMin,currentAmmo.ammoSpawnIntervalMax);
+        }
+        else
+        {
+            ammoSpawnInterval = 0;
+        }
+
+        while(ammoCounter < ammoPerShot)
+        {
+            ammoCounter++;
+
+            GameObject ammoPrefab = currentAmmo.ammoPrefabArray[Random.Range(0, currentAmmo.ammoPrefabArray.Length)];
 
             float ammoSpeed = Random.Range(currentAmmo.ammoSpeedMin, currentAmmo.ammoSpeedMax);
 
             IFireable ammo = (IFireable)PoolManager.Instance.ReuseComponent(ammoPrefab, activeWeapon.GetShootPosition(), Quaternion.identity);
 
-            ammo.InitialiseAmmo(currentAmmo,aimAngle,weaponAngle,ammoSpeed,weaponAimDirectionVector);
+            ammo.InitialiseAmmo(currentAmmo, aimAngle, weaponAimAngle, ammoSpeed, weaponAimDirectionVector);
 
-            if(!activeWeapon.GetCurrentWeapon().weaponsDetails.hasInfiniteClipCapacity)
-            {
-                activeWeapon.GetCurrentWeapon().weaponRemainingAmmo--;
-                activeWeapon.GetCurrentWeapon().weaponClipRemainingAmmo--;
-            }
-            weaponFireEvent.CallWeaponFireEvent(activeWeapon.GetCurrentWeapon());
+            yield return new WaitForSeconds(ammoSpawnInterval);
         }
 
+        if (!activeWeapon.GetCurrentWeapon().weaponsDetails.hasInfiniteClipCapacity)
+        {
+            activeWeapon.GetCurrentWeapon().weaponRemainingAmmo--;
+            activeWeapon.GetCurrentWeapon().weaponClipRemainingAmmo--;
+        }
+        weaponFireEvent.CallWeaponFireEvent(activeWeapon.GetCurrentWeapon());//更新ui界面
     }
 
     private void RestartCoolDownTimer()
