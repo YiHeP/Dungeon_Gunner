@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6c33cfe7132cb41bfd132a51f01556, type: 3}
   m_Name: SoundEffect_GM6LynSniper_Reload
   m_EditorClassIdentifier: 
-  soundEffectName: "\u624B\u67AA\u88C5\u586B"
+  soundEffectName: "GM6\u88C5\u586B"
   soundEffectPrefab: {fileID: 7187174008289815004, guid: 3ea4ee78d113fb14bbfd6713693035de, type: 3}
-  soundEffectClip: {fileID: 8300000, guid: 28a2b6d663b81204a8dfb1dd072eefe1, type: 3}
+  soundEffectClip: {fileID: 8300000, guid: 2c603889228a0794686920e2c1d88d6e, type: 3}
   soundEffectPitchRandomVariationMin: 0.8
   soundEffectPitchRandomVariationMax: 1.2
   soundEffectVolume: 1

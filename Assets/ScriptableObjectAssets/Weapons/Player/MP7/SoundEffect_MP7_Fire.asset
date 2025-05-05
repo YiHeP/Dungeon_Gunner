@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6c33cfe7132cb41bfd132a51f01556, type: 3}
   m_Name: SoundEffect_MP7_Fire
   m_EditorClassIdentifier: 
-  soundEffectName: "\u624B\u67AA\u5F00\u706B"
+  soundEffectName: "MP7\u5F00\u706B"
   soundEffectPrefab: {fileID: 7187174008289815004, guid: 3ea4ee78d113fb14bbfd6713693035de, type: 3}
-  soundEffectClip: {fileID: 8300000, guid: 71d623ca1199efc429d66921b7070dda, type: 3}
+  soundEffectClip: {fileID: 8300000, guid: 239fe29014b244744a9130f118be1b90, type: 3}
   soundEffectPitchRandomVariationMin: 0.8
   soundEffectPitchRandomVariationMax: 1.2
-  soundEffectVolume: 0.504
+  soundEffectVolume: 1
