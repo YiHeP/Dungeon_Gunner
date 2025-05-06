@@ -1215,6 +1215,9 @@ MonoBehaviour:
   - poolSize: 40
     prefab: {fileID: 7187174008289815004, guid: 3ea4ee78d113fb14bbfd6713693035de, type: 3}
     componentType: SoundEffect
+  - poolSize: 20
+    prefab: {fileID: 3999004778325537452, guid: 2085bff87a9a1e944a3290ae55e1a6a0, type: 3}
+    componentType: WeaponShootEffect
 --- !u!1 &845709436
 GameObject:
   m_ObjectHideFlags: 0

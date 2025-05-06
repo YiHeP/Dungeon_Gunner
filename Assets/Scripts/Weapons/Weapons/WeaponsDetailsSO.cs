@@ -81,6 +81,10 @@ public class WeaponsDetailsSO : ScriptableObject
     #endregion
     public SoundEffectSO wepaonReloadingSoundEffect;
 
+    #region Tooltip
+    [Tooltip("ÎäÆ÷Éä»÷ÌØÐ§")]
+    #endregion
+    public WeaponShootEffectSO weaponShootEffect;
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
