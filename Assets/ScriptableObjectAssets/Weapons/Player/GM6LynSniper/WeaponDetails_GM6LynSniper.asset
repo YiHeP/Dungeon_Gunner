@@ -25,3 +25,4 @@ MonoBehaviour:
   weaponReloadTime: 2
   weaponFiringSoundEffect: {fileID: 11400000, guid: 8edfae4fe327dd147a5ccb1ae5ea535c, type: 2}
   wepaonReloadingSoundEffect: {fileID: 11400000, guid: a55a16e141b24aa43bb9be1ae82593f2, type: 2}
+  weaponShootEffect: {fileID: 11400000, guid: 5f0f004e2937fce4db1ad4493ea709b2, type: 2}
