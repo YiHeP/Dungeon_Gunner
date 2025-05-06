@@ -52,4 +52,4 @@ MonoBehaviour:
   effectSprite: {fileID: 21300000, guid: 21c463da8d2a32246a23981f95285672, type: 3}
   velocityOverLifeTimeMin: {x: -0.3, y: -0.3, z: 0}
   velocityOverLifeTimeMax: {x: 2.3, y: 0.3, z: 0}
-  weaponShootEffectPrefab: {fileID: 3999004778325537452, guid: 2085bff87a9a1e944a3290ae55e1a6a0, type: 3}
+  weaponShootEffectPrefab: {fileID: 2818792151242779036, guid: 59bc4fa67e758f8439555e0d0f1d4fa5, type: 3}
