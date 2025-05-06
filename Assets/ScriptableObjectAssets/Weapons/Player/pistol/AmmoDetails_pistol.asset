@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoName: "\u624B\u67AA\u5F39\u836F"
   isPlayerAmmo: 1
+  ammoHitEffect: {fileID: 11400000, guid: 25f32ba3cd26a7b4f902473e6220c006, type: 2}
   ammoSprite: {fileID: 21300000, guid: 4df9cc7131cd27f4288bca5e76c82034, type: 3}
   ammoPrefabArray:
   - {fileID: 2959286265759175186, guid: 01dd1a550b614c74eab4712ec4fdced8, type: 3}

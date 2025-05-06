@@ -17,6 +17,11 @@ public class AmmoDetailSO : ScriptableObject
 
     public bool isPlayerAmmo;
 
+    #region Tooltip
+    [Tooltip("填入子弹命中特效")]
+    #endregion
+    public AmmoHitEffectSO ammoHitEffect;
+
     #region 子弹的预制体，精灵，材质
     [Space(10)]
     [Header("子弹的预制体，精灵，材质")]
@@ -146,6 +151,7 @@ public class AmmoDetailSO : ScriptableObject
     [Tooltip("子弹痕迹结束宽度")]
     #endregion
     [Range(0f, 1f)] public float ammoTrailEndtWidth;
+
 
     #region Validation
 #if UNITY_EDITOR
