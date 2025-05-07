@@ -1,23 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2929474b5ea336b49ae082f8773f021f, type: 3}
-  m_Name: PlayerDetails_TheThief
-  m_EditorClassIdentifier: 
-  playerCharacterName: "\u6E38\u4FA0"
-  playerPrefab: {fileID: 5318991945192819533, guid: 4373a7de97b593841bfd5e47e16ee770, type: 3}
-  runtimeAnimatorController: {fileID: 9100000, guid: 29f20cf0ee984af439044dc58666e264, type: 2}
-  PlayerHealthAmount: 80
-  staringWeapon: {fileID: 11400000, guid: 952e6bb38b8142d438eeacdc235a49ed, type: 2}
-  stasrtingWeaponList:
-  - {fileID: 11400000, guid: 952e6bb38b8142d438eeacdc235a49ed, type: 2}
-  PlayerMiniMapIcon: {fileID: 21300000, guid: dd04472fe3c7db841a3eb093d754ff5e, type: 3}
-  PlayerHandSprite: {fileID: 21300000, guid: abf229e09e7ec3241b4f5ac122a443a6, type: 3}
+version https://git-lfs.github.com/spec/v1
+oid sha256:158f069f34de394b99c5475ee026f9d88147a568b8d7dcb407b3be5050481bb5
+size 1022

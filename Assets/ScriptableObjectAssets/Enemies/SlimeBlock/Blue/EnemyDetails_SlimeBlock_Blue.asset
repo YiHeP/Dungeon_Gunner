@@ -1,16 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d59ee562bd5344fab944840c2312d2, type: 3}
-  m_Name: EnemyDetails_SlimeBlock_Blue
-  m_EditorClassIdentifier: 
-  enemyName: "\u51B0\u7075\u53F2\u83B1\u59C6"
-  enemyPrefab: {fileID: 7020190185503194843, guid: 3983027269005e94091f8f29c668ec4b, type: 3}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5e4712799e70c354918e55f4e678bdb272b5b9a778ece0d68d8557a615a9d593
+size 557

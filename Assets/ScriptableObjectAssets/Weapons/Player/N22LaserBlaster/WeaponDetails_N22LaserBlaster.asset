@@ -1,28 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902bc8a4da199ba42a413d6a246c8d41, type: 3}
-  m_Name: WeaponDetails_N22LaserBlaster
-  m_EditorClassIdentifier: 
-  weaponName: "N22\u6FC0\u5149\u53D1\u5C04\u5668"
-  weaponSprite: {fileID: 21300000, guid: e9d1276e0a6b9bf42b04b5470c7073fb, type: 3}
-  weaponShootPosition: {x: 1.323, y: 0.294, z: 0}
-  weaponCurrentAmmo: {fileID: 11400000, guid: 0c2ceaf6b58df2b48b8ce35ec40b5f6c, type: 2}
-  hasInfiniteAmmo: 0
-  hasInfiniteClipCapacity: 0
-  weaponClipAmmoCapacity: 8
-  weaponAmmoCapacity: 50
-  weaponFireRate: 0.5
-  weaponPrechargeTime: 0.3
-  weaponReloadTime: 3
-  weaponFiringSoundEffect: {fileID: 11400000, guid: 2520d238bc3ed1348b9b9d52353f7e5c, type: 2}
-  wepaonReloadingSoundEffect: {fileID: 11400000, guid: 899db4e35ee22434681449c8d6227cbe, type: 2}
-  weaponShootEffect: {fileID: 11400000, guid: 26d72b1c4ef70444886ce5e50a5fe5d2, type: 2}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8603a1b0879fd4706e878ecac919ee54d9b3f6719d09516158a327d112e220f3
+size 1147

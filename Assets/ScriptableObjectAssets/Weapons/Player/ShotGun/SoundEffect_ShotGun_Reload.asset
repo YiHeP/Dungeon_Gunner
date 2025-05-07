@@ -1,20 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b6c33cfe7132cb41bfd132a51f01556, type: 3}
-  m_Name: SoundEffect_ShotGun_Reload
-  m_EditorClassIdentifier: 
-  soundEffectName: "\u9730\u5F39\u67AA\u88C5\u586B"
-  soundEffectPrefab: {fileID: 7187174008289815004, guid: 3ea4ee78d113fb14bbfd6713693035de, type: 3}
-  soundEffectClip: {fileID: 8300000, guid: 8bf4219f6394996469312e55ac2af0d1, type: 3}
-  soundEffectPitchRandomVariationMin: 0.8
-  soundEffectPitchRandomVariationMax: 1
-  soundEffectVolume: 1
+version https://git-lfs.github.com/spec/v1
+oid sha256:4962051c8d56ab88347e5b1d14b2e0ec33bb195cedb513fbb6c2db8744fe2b36
+size 758

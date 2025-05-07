@@ -1,23 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2929474b5ea336b49ae082f8773f021f, type: 3}
-  m_Name: PlayerDetails_TheScientist
-  m_EditorClassIdentifier: 
-  playerCharacterName: "\u79D1\u5B66\u72C2\u9B54"
-  playerPrefab: {fileID: 6602776115623164117, guid: 43742cecfe5d49842b1809f330785157, type: 3}
-  runtimeAnimatorController: {fileID: 9100000, guid: e52ed9234b488b0449570da9e57ce474, type: 2}
-  PlayerHealthAmount: 100
-  staringWeapon: {fileID: 11400000, guid: 58b19901486171b48b4d88565ca53ac9, type: 2}
-  stasrtingWeaponList:
-  - {fileID: 11400000, guid: 58b19901486171b48b4d88565ca53ac9, type: 2}
-  PlayerMiniMapIcon: {fileID: 21300000, guid: da88e4a191f22674e9aab239e652640a, type: 3}
-  PlayerHandSprite: {fileID: 21300000, guid: 2788b711f80a9194096a03ef26a440cb, type: 3}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d4c338e2a7cfb4eddebdb7eba0dc84876cac78bfb946fea4a39234f0a856cbc6
+size 1039

@@ -1,16 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d59ee562bd5344fab944840c2312d2, type: 3}
-  m_Name: EnemyDetails_Grimonk_Brown
-  m_EditorClassIdentifier: 
-  enemyName: "\u683C\u91CC\u8499\u514B"
-  enemyPrefab: {fileID: 8161356699606825969, guid: 3c128e295131c714ca6620f3dfa12316, type: 3}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7e952ae150ae8fdb8539921099b1d5d48a1474960974723474c92122f5a0ab59
+size 549

@@ -1,28 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902bc8a4da199ba42a413d6a246c8d41, type: 3}
-  m_Name: WeaponDetails_PlasmaBlaster
-  m_EditorClassIdentifier: 
-  weaponName: "\u7B49\u79BB\u5B50\u7206\u67AA"
-  weaponSprite: {fileID: 21300000, guid: a9d9372b640a67a4dae1cdbb59e3b919, type: 3}
-  weaponShootPosition: {x: 1.245, y: 0.277, z: 0}
-  weaponCurrentAmmo: {fileID: 11400000, guid: 7e583c92599ab084ab7510d5ec8f37a7, type: 2}
-  hasInfiniteAmmo: 1
-  hasInfiniteClipCapacity: 0
-  weaponClipAmmoCapacity: 6
-  weaponAmmoCapacity: 0
-  weaponFireRate: 0.5
-  weaponPrechargeTime: 0.2
-  weaponReloadTime: 1
-  weaponFiringSoundEffect: {fileID: 11400000, guid: 3cbcb57cc821d344889f4cf4ea4ba69a, type: 2}
-  wepaonReloadingSoundEffect: {fileID: 11400000, guid: 8479dfb7d39a3e04cb41c277a1f75ecd, type: 2}
-  weaponShootEffect: {fileID: 11400000, guid: 40518c288375d0149a6605ecbec99bf1, type: 2}
+version https://git-lfs.github.com/spec/v1
+oid sha256:90facfcc6653fc9508b75d3afb6cba240cca2ce7de6c14dd5819813bd14eba1e
+size 1141

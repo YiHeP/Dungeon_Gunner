@@ -1,28 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902bc8a4da199ba42a413d6a246c8d41, type: 3}
-  m_Name: WeaponDetails_GM6LynSniper
-  m_EditorClassIdentifier: 
-  weaponName: "GM6\u5C71\u732B\u72D9\u51FB\u6B65\u67AA"
-  weaponSprite: {fileID: 21300000, guid: 7e70ae1621ea16746be436ae77e38ce9, type: 3}
-  weaponShootPosition: {x: 1.678, y: 0.234, z: 0}
-  weaponCurrentAmmo: {fileID: 11400000, guid: 76aa53e32dbe45643816270c3370bce3, type: 2}
-  hasInfiniteAmmo: 0
-  hasInfiniteClipCapacity: 0
-  weaponClipAmmoCapacity: 4
-  weaponAmmoCapacity: 30
-  weaponFireRate: 0.4
-  weaponPrechargeTime: 0
-  weaponReloadTime: 2
-  weaponFiringSoundEffect: {fileID: 11400000, guid: 8edfae4fe327dd147a5ccb1ae5ea535c, type: 2}
-  wepaonReloadingSoundEffect: {fileID: 11400000, guid: a55a16e141b24aa43bb9be1ae82593f2, type: 2}
-  weaponShootEffect: {fileID: 11400000, guid: 5f0f004e2937fce4db1ad4493ea709b2, type: 2}
+version https://git-lfs.github.com/spec/v1
+oid sha256:bca715baaa48e84c5b208207cfc8164a9be50da82a7cd13edc62767886f0ae84
+size 1148

@@ -1,16 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d59ee562bd5344fab944840c2312d2, type: 3}
-  m_Name: EnemyDetails_MudRock_Brown
-  m_EditorClassIdentifier: 
-  enemyName: "\u6CE5\u5CA9"
-  enemyPrefab: {fileID: 5955192082887242732, guid: 02671862a2e12f344b9a6f11caa52a10, type: 3}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b1b8759fe80608361b39f67b2e142377d98b3f2df56c1b8538fcbbdb20891057
+size 537

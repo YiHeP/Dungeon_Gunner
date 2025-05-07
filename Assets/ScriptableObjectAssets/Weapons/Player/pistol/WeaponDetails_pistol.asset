@@ -1,28 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902bc8a4da199ba42a413d6a246c8d41, type: 3}
-  m_Name: WeaponDetails_Pistol
-  m_EditorClassIdentifier: 
-  weaponName: "\u6C99\u6F20\u4E4B\u9E70"
-  weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
-  weaponShootPosition: {x: 1.115, y: 0.277, z: 0}
-  weaponCurrentAmmo: {fileID: 11400000, guid: bc8c8b8488a257e4bbfc4dd15c0fc2af, type: 2}
-  hasInfiniteAmmo: 1
-  hasInfiniteClipCapacity: 0
-  weaponClipAmmoCapacity: 10
-  weaponAmmoCapacity: 0
-  weaponFireRate: 0.25
-  weaponPrechargeTime: 0
-  weaponReloadTime: 1.2
-  weaponFiringSoundEffect: {fileID: 11400000, guid: 2b162794ed459f74f851534d1caad116, type: 2}
-  wepaonReloadingSoundEffect: {fileID: 11400000, guid: b3f9f1f97152fd24abf9dc973cbc0853, type: 2}
-  weaponShootEffect: {fileID: 11400000, guid: 35b166a08bb88264898366f83f062179, type: 2}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3e0d18c9d5bc51afc79543434754c523d33fc4141b8dbed51bd05472bc929321
+size 1130

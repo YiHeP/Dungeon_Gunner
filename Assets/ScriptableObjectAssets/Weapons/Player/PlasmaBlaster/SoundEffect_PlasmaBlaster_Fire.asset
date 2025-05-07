@@ -1,20 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b6c33cfe7132cb41bfd132a51f01556, type: 3}
-  m_Name: SoundEffect_PlasmaBlaster_Fire
-  m_EditorClassIdentifier: 
-  soundEffectName: "\u7B49\u79BB\u5B50\u5F00\u706B"
-  soundEffectPrefab: {fileID: 7187174008289815004, guid: 3ea4ee78d113fb14bbfd6713693035de, type: 3}
-  soundEffectClip: {fileID: 8300000, guid: de229ff6f23dad645a8f50a8ed868b27, type: 3}
-  soundEffectPitchRandomVariationMin: 0.8
-  soundEffectPitchRandomVariationMax: 1.2
-  soundEffectVolume: 1
+version https://git-lfs.github.com/spec/v1
+oid sha256:46ee0aeb6f7d2d27093fd704a94471846e20d6b111638dec9e0827347677a6ba
+size 764

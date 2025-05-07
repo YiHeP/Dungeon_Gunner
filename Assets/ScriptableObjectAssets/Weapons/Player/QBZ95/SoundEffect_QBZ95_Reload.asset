@@ -1,20 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b6c33cfe7132cb41bfd132a51f01556, type: 3}
-  m_Name: SoundEffect_QBZ95_Reload
-  m_EditorClassIdentifier: 
-  soundEffectName: "95\u5F0F\u88C5\u586B"
-  soundEffectPrefab: {fileID: 7187174008289815004, guid: 3ea4ee78d113fb14bbfd6713693035de, type: 3}
-  soundEffectClip: {fileID: 8300000, guid: 212f1934ecd30614eb0bebcc5298f72e, type: 3}
-  soundEffectPitchRandomVariationMin: 0.8
-  soundEffectPitchRandomVariationMax: 1.2
-  soundEffectVolume: 1
+version https://git-lfs.github.com/spec/v1
+oid sha256:e802b85c5031499149c80e2edc0ce1e777011cbc1b4d6580ce7c3ca26c4a64b2
+size 748

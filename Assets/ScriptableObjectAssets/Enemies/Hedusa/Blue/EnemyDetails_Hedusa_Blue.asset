@@ -1,16 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d59ee562bd5344fab944840c2312d2, type: 3}
-  m_Name: EnemyDetails_Hedusa_Blue
-  m_EditorClassIdentifier: 
-  enemyName: "\u84DD\u5996\u7F8E\u675C\u838E"
-  enemyPrefab: {fileID: 4875549316984891985, guid: e1bc8216856599b43aaac23eee3e9609, type: 3}
+version https://git-lfs.github.com/spec/v1
+oid sha256:6eccec801feb02b2e8d1a003d3877238c61438a7c42b9050eac59e71ac3fec46
+size 553

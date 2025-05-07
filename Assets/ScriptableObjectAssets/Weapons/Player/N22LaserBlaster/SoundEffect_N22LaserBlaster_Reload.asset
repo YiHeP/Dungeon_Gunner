@@ -1,20 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b6c33cfe7132cb41bfd132a51f01556, type: 3}
-  m_Name: SoundEffect_N22LaserBlaster_Reload
-  m_EditorClassIdentifier: 
-  soundEffectName: "N22\u88C5\u586B"
-  soundEffectPrefab: {fileID: 7187174008289815004, guid: 3ea4ee78d113fb14bbfd6713693035de, type: 3}
-  soundEffectClip: {fileID: 8300000, guid: 3a23ff12c7253704a92030876b18c839, type: 3}
-  soundEffectPitchRandomVariationMin: 1
-  soundEffectPitchRandomVariationMax: 1.3
-  soundEffectVolume: 0.7
+version https://git-lfs.github.com/spec/v1
+oid sha256:0afd01c9308546781e3295f22ccbc2bc4f4d7a4e7ae1043830fc9d14837f07fa
+size 753
