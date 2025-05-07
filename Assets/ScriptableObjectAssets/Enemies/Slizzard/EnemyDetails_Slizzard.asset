@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d59ee562bd5344fab944840c2312d2, type: 3}
+  m_Name: EnemyDetails_Slizzard
+  m_EditorClassIdentifier: 
+  enemyName: "\u65AF\u5229\u624E\u5FB7"
+  enemyPrefab: {fileID: 4625519172088333204, guid: c183699be5cc89a4487b214fd05f4128, type: 3}
