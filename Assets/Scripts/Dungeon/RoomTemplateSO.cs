@@ -72,6 +72,16 @@ public class RoomTemplateSO : ScriptableObject
 
     public Vector2Int[] spawnPositionArray;
 
+    #region Header 敌人细节
+    [Space(10)]
+    [Header("敌人细节")]
+    #endregion
+    #region Tooltip
+    [Tooltip("填入一个在这个房间于特定的地下城等级中生成的怪物类型")]
+    #endregion
+    public List<SpawnableObjectByLevel<EnemyDetailsSO>> enemiesByLevelList;
+         
+
     public List<Doorway> GetDoorwayList()
     {
         return doorwayList;
