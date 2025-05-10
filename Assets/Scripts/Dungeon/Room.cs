@@ -8,9 +8,9 @@ public class Room
     public string templateid;
     public GameObject prefab;
     public RoomNodeTypeSO roomNodeType;
-    public Vector2Int lowerBounds;
+    public Vector2Int lowerBounds;//世界坐标系中的左下角位置
     public Vector2Int upperBounds;
-    public Vector2Int templateLowerBounds;
+    public Vector2Int templateLowerBounds;//模板房间的左下角坐标，相对于模板本身的局部坐标系
     public Vector2Int templateUpperBounds;
     public Vector2Int[] spawnPositionArray;
     public List<string> childRoomIdList;

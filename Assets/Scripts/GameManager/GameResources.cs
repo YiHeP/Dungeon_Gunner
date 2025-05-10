@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.Audio;
 
 public class GameResources : MonoBehaviour
@@ -56,6 +57,19 @@ public class GameResources : MonoBehaviour
     #endregion
     public Shader variableLitShader;
 
+    #region Header 特殊瓦片地图的瓦片
+    [Space(10)]
+    [Header("特殊瓦片地图的瓦片")]
+    #endregion
+    #region Tooltip
+    [Tooltip("敌人可以导航到的碰撞图块")]
+    #endregion
+    public TileBase[] enemyUnwalkableCollisionTilesArray;
+    #region Tooltip
+    [Tooltip("敌方导航的首选路径图块")]
+    #endregion
+    public TileBase perferredEnemyPathTile;
+
     #region Header UI
     [Space(10)]
     [Header("UI")]
@@ -89,6 +103,8 @@ public class GameResources : MonoBehaviour
         HelpUtilities.ValidateCheckNullValues(this, nameof(ammoIconPrefab), ammoIconPrefab);
         HelpUtilities.ValidateCheckNullValues(this, nameof(soundMasterMixrGroup), soundMasterMixrGroup);
         HelpUtilities.ValidateCheckNullValues(this, nameof(doorOpenCloseSoundEffect), doorOpenCloseSoundEffect);
+        HelpUtilities.ValidateCheckEnumerableValues(this, nameof(enemyUnwalkableCollisionTilesArray), enemyUnwalkableCollisionTilesArray);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(perferredEnemyPathTile), perferredEnemyPathTile);
     }
 #endif
     #endregion

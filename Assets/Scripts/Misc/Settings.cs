@@ -47,6 +47,12 @@ public static class Settings
     public const float useAimAngleDistance = 3.5f;
     #endregion
 
+    #region a星算法参数
+    public const int defaultAStarMovementPenalty = 40;
+    public const int perferredPathAStarMovementPenalty = 1;
+
+    #endregion
+
     #region UI 参数
     public const float uiAmmoIconSpacing = 4f; 
     #endregion

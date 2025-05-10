@@ -1284,8 +1284,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ae0a6a2f8086a0941965bb3bfae9db8a, type: 2}
-  m_sharedMaterial: {fileID: -8604456964122173350, guid: ae0a6a2f8086a0941965bb3bfae9db8a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c0c754d15e46e1c4399bd59f444a321d, type: 2}
+  m_sharedMaterial: {fileID: -8604456964122173350, guid: c0c754d15e46e1c4399bd59f444a321d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1503,8 +1503,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 200/200
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ae0a6a2f8086a0941965bb3bfae9db8a, type: 2}
-  m_sharedMaterial: {fileID: -8604456964122173350, guid: ae0a6a2f8086a0941965bb3bfae9db8a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c0c754d15e46e1c4399bd59f444a321d, type: 2}
+  m_sharedMaterial: {fileID: -8604456964122173350, guid: c0c754d15e46e1c4399bd59f444a321d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1787,8 +1787,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u673A\u67AA"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ae0a6a2f8086a0941965bb3bfae9db8a, type: 2}
-  m_sharedMaterial: {fileID: -8604456964122173350, guid: ae0a6a2f8086a0941965bb3bfae9db8a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c0c754d15e46e1c4399bd59f444a321d, type: 2}
+  m_sharedMaterial: {fileID: -8604456964122173350, guid: c0c754d15e46e1c4399bd59f444a321d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1987,6 +1987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1321194783}
   - component: {fileID: 1321194782}
+  - component: {fileID: 1321194784}
   m_Layer: 0
   m_Name: DungeonBuilder
   m_TagString: Untagged
@@ -2021,6 +2022,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1321194784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321194781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a299c195992975642b3bbd7d7bd5d19b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1415951293
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Tilemap frontTilemap;
     [HideInInspector] public Tilemap collisionTilemap;
     [HideInInspector] public Tilemap minimapTilemap;
+    [HideInInspector] public int[,] aStarMovementPenalty;
     [HideInInspector] public Bounds roomCollisionBounds;
 
     private BoxCollider2D boxCollider2D;
@@ -41,6 +42,8 @@ public class InstantiatedRoom : MonoBehaviour
         PopulateTilemapMemberVariable(roomGameObject);
 
         BlockOffUnuseDoorWays();
+
+        AddObstaclesAndPerferredPaths();
 
         AddDoorToRoom();
 
@@ -172,6 +175,34 @@ public class InstantiatedRoom : MonoBehaviour
                     + xPos, startPosition.y - yPos, 0)));
 
                 tilemap.SetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y -1 - yPos, 0), matrix);
+            }
+        }
+    }
+
+    private void AddObstaclesAndPerferredPaths()//…Ë÷√“∆∂Ø≥Õ∑£
+    {
+        aStarMovementPenalty = new int[room.templateUpperBounds.x -  room.templateLowerBounds.x + 1 , room.templateUpperBounds.y - 
+            room.templateLowerBounds.y + 1];
+        for(int x = 0; x<(room.templateUpperBounds.x - room.templateLowerBounds.x + 1); x++)
+        {
+            for(int y = 0; y<(room.templateUpperBounds.y - room.templateLowerBounds.y + 1); y++)
+            {
+                aStarMovementPenalty[x, y] = Settings.defaultAStarMovementPenalty;
+                TileBase tile = collisionTilemap.GetTile(new Vector3Int(x + room.templateLowerBounds.x,y + room.templateLowerBounds.y,0));
+
+                foreach(TileBase collisionTile in GameResources.Instance.enemyUnwalkableCollisionTilesArray)
+                {
+                    if(tile == collisionTile)
+                    {
+                        aStarMovementPenalty[x, y] = 0;
+                        break;
+                    }
+                }
+
+                if(tile == GameResources.Instance.perferredEnemyPathTile)
+                {
+                    aStarMovementPenalty[x, y] = Settings.perferredPathAStarMovementPenalty;
+                }
             }
         }
     }
