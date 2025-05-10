@@ -19,12 +19,12 @@ public class RoomEnemySpawnParameters
     public int maxTotalEnemiesToSpawn;
 
     #region Tooltip
-    [Tooltip("一次性生成的最小量")]
+    [Tooltip("场上怪物的最小量")]
     #endregion
     public int minConcurrentEnemies;
 
     #region Tooltip
-    [Tooltip("一次性生成的最大量")]
+    [Tooltip("场上怪物的最大量")]
     #endregion
     public int maxConcurrentEnemies;
 

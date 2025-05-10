@@ -35,6 +35,8 @@ public static class Settings
 
     public static float baseSpeedForPlayerAnimator = 8f;
 
+    public static float baseSpeedForEnemyAnimator = 3f;
+
     public static int open = Animator.StringToHash("open");
     #endregion
 

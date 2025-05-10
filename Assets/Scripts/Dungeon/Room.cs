@@ -13,6 +13,8 @@ public class Room
     public Vector2Int templateLowerBounds;//模板房间的左下角坐标，相对于模板本身的局部坐标系
     public Vector2Int templateUpperBounds;
     public Vector2Int[] spawnPositionArray;
+    public List<SpawnableObjectByLevel<EnemyDetailsSO>> enemiesByLevelList;
+    public List<RoomEnemySpawnParameters> roomEnemySpawnParametersList;
     public List<string> childRoomIdList;
     public string parentRoomId;
     public List<Doorway> doorWayList;
@@ -26,5 +28,29 @@ public class Room
     {
         childRoomIdList = new List<string>();
         doorWayList = new List<Doorway>();
+    }
+
+    public int GetNumberOfEnemiesToSpwan(DungeonLevelSO dungeonLevel)
+    {
+        foreach(RoomEnemySpawnParameters roomEnemySpawnParameters in roomEnemySpawnParametersList)
+        {
+            if(roomEnemySpawnParameters.dungeonLevel == dungeonLevel)
+            {
+                return Random.Range(roomEnemySpawnParameters.minTotalEnemiesToSpawn, roomEnemySpawnParameters.maxTotalEnemiesToSpawn);
+            }
+        }
+        return 0;
+    }
+
+    public RoomEnemySpawnParameters GetRoomEnemySpawnParameters(DungeonLevelSO dungeonLevel)
+    {
+        foreach (RoomEnemySpawnParameters roomEnemySpawnParameters in roomEnemySpawnParametersList)
+        {
+            if (roomEnemySpawnParameters.dungeonLevel == dungeonLevel)
+            {
+                return roomEnemySpawnParameters;
+            }
+        }
+        return null;
     }
 }

@@ -10,6 +10,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AnimateEnemy))]
 [RequireComponent(typeof(EnemyMovementAI))]
 [RequireComponent(typeof(MovementToPositionEvent))]
 [RequireComponent(typeof(MovementToPosition))]
@@ -20,7 +21,7 @@ using UnityEngine.Rendering;
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
 {
-    public EnemyDetailsSO enemyDetails;
+    [HideInInspector] public EnemyDetailsSO enemyDetails;
     private EnemyMovementAI enemyMovementAI;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
     [HideInInspector] public IdleEvent idleEvent;
@@ -38,5 +39,17 @@ public class Enemy : MonoBehaviour
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         spriteRendererArray = GetComponentsInChildren<SpriteRenderer>();
         animator = GetComponent<Animator>();
+    }
+
+    public void EnemyInitialization(EnemyDetailsSO enemyDetailsSO, int enemySpawnNumber, DungeonLevelSO dungeonLevel)
+    {
+        this.enemyDetails = enemyDetailsSO;
+
+        SetEnemyAnimationSpeed();
+    }
+
+    private void SetEnemyAnimationSpeed()
+    {
+        animator.speed = enemyMovementAI.moveSpeed / Settings.baseSpeedForEnemyAnimator;
     }
 }
