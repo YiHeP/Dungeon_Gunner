@@ -54,7 +54,7 @@ public class RandomSpawnableObject<T>
         }
         int lookUpvalue = Random.Range(0, ratioValueTotal);
 
-        foreach(chanceBoundaries spawnChance in  chanceBoundariesList)
+        foreach(chanceBoundaries spawnChance in chanceBoundariesList)
         {
             if(lookUpvalue >= spawnChance.lowBoundaryValue && lookUpvalue <= spawnChance.highBoundaryValue)
             {

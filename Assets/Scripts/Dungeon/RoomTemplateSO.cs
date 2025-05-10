@@ -80,7 +80,12 @@ public class RoomTemplateSO : ScriptableObject
     [Tooltip("填入一个在这个房间于特定的地下城等级中生成的怪物类型")]
     #endregion
     public List<SpawnableObjectByLevel<EnemyDetailsSO>> enemiesByLevelList;
-         
+
+    #region Tooltip
+    [Tooltip("填入生成敌人参数列表")]
+    #endregion
+    public List<RoomEnemySpawnParameters> roomEnemySpawnParameterList;
+
 
     public List<Doorway> GetDoorwayList()
     {
@@ -102,7 +107,53 @@ public class RoomTemplateSO : ScriptableObject
             EditorUtility.SetDirty(this);
         }
 
+        HelpUtilities.ValidateCheckNullValues(this, nameof(prefab), prefab);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(roomNodeType), roomNodeType);
+
         HelpUtilities.ValidateCheckEnumerableValues(this, nameof(doorwayList), doorwayList);
+
+        if(enemiesByLevelList.Count > 0 || roomEnemySpawnParameterList.Count > 0)
+        {
+            HelpUtilities.ValidateCheckEnumerableValues(this,nameof(enemiesByLevelList), enemiesByLevelList);
+            HelpUtilities.ValidateCheckEnumerableValues(this,nameof(roomEnemySpawnParameterList), roomEnemySpawnParameterList);
+
+            foreach(RoomEnemySpawnParameters roomEnemySpawnParameters in roomEnemySpawnParameterList)
+            {
+                HelpUtilities.ValidateCheckNullValues(this,nameof(roomEnemySpawnParameters.dungeonLevel), roomEnemySpawnParameters.dungeonLevel);
+                HelpUtilities.ValidateCheckPositiveRange(this, nameof(roomEnemySpawnParameters.minTotalEnemiesToSpawn),
+                    roomEnemySpawnParameters.minTotalEnemiesToSpawn,nameof(roomEnemySpawnParameters.maxTotalEnemiesToSpawn),
+                    roomEnemySpawnParameters.maxTotalEnemiesToSpawn,true);
+                HelpUtilities.ValidateCheckPositiveRange(this, nameof(roomEnemySpawnParameters.minSpawnInterval),
+                    roomEnemySpawnParameters.minSpawnInterval, nameof(roomEnemySpawnParameters.maxSpawnInterval),
+                    roomEnemySpawnParameters.maxSpawnInterval, true);
+                HelpUtilities.ValidateCheckPositiveRange(this, nameof(roomEnemySpawnParameters.minConcurrentEnemies),
+                    roomEnemySpawnParameters.minConcurrentEnemies, nameof(roomEnemySpawnParameters.maxConcurrentEnemies),
+                    roomEnemySpawnParameters.maxConcurrentEnemies, true);
+                bool isEnemyTypesListForDungeonLevel = false;
+
+                foreach(SpawnableObjectByLevel<EnemyDetailsSO> dungeonObjectByLevel in enemiesByLevelList)
+                {
+                    if(dungeonObjectByLevel.dungeonLevel == roomEnemySpawnParameters.dungeonLevel && 
+                        dungeonObjectByLevel.spawnableObjectRatiosList.Count > 0)
+                    {
+                        isEnemyTypesListForDungeonLevel = true;
+                        HelpUtilities.ValidateCheckNullValues(this, nameof(dungeonObjectByLevel.dungeonLevel), dungeonObjectByLevel.dungeonLevel);
+
+                        foreach(SpawnableObjectRatio<EnemyDetailsSO> dungeonObjectRatio in dungeonObjectByLevel.spawnableObjectRatiosList)
+                        {
+                            HelpUtilities.ValidateCheckNullValues(this, nameof(dungeonObjectRatio.dungeonObject),dungeonObjectRatio.dungeonObject);
+                            HelpUtilities.ValidateCheckPositiveValues(this,nameof(dungeonObjectRatio.ratio), dungeonObjectRatio.ratio,false);
+                        }
+                    }
+                }
+
+                if(isEnemyTypesListForDungeonLevel == false && roomEnemySpawnParameters.dungeonLevel != null)
+                {
+                    Debug.Log("此游戏物品：" + this.name.ToString() + "在地牢等级:" + roomEnemySpawnParameters.dungeonLevel.levelName + "中" +
+                        "缺少敌人类型");
+                }
+            }
+        }
 
         //检查填充的生成位置
         HelpUtilities.ValidateCheckEnumerableValues(this, nameof(spawnPositionArray), spawnPositionArray);

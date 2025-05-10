@@ -98,7 +98,7 @@ public class HelpUtilities
         return false;
     }
 
-    public static bool ValidateCheckEnumerableValues(Object thisObject, string fieldName, IEnumerable enumerableObjectToCheck)
+    public static bool ValidateCheckEnumerableValues(Object thisObject, string fieldName, IEnumerable enumerableObjectToCheck)//查询数组类
     {
         bool error = false;
         int count = 0;

@@ -462,7 +462,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
         }
     }
 
-    private RoomTemplateSO GetRoomTemplate(string roomTeplateId)
+    public RoomTemplateSO GetRoomTemplate(string roomTeplateId)
     {
         if(roomTemplateDictionary.TryGetValue(roomTeplateId, out RoomTemplateSO roomTemplate))
         {
@@ -474,7 +474,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
         }
     }
 
-    private Room GetRoomByRoomId(string roomId)
+    public Room GetRoomByRoomId(string roomId)
     {
         if(dungeonBuilderRoomDictionary.TryGetValue(roomId, out Room room))
         { 
