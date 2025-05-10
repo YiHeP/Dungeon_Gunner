@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1449776442726139727, guid: c0148269f8bdf7542b44ccf48a24c7e4, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 46e4b6fbecd4ec740a9d82f854cb9d4b, type: 2}
     - target: {fileID: -608471740409978446, guid: c0148269f8bdf7542b44ccf48a24c7e4, type: 3}
       propertyPath: m_Controller
       value: 
@@ -111,6 +115,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3704836998650815472, guid: c0148269f8bdf7542b44ccf48a24c7e4, type: 3}
+      propertyPath: enemyDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 294ccea14063b9b4581ef31c01610e7f, type: 2}
     - target: {fileID: 4209688786017289930, guid: c0148269f8bdf7542b44ccf48a24c7e4, type: 3}
       propertyPath: m_Sprite
       value: 

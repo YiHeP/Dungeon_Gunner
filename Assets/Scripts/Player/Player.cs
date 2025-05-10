@@ -103,4 +103,8 @@ public class Player : MonoBehaviour
         health.SetStartingHealth(playerDetails.PlayerHealthAmount);
     }
 
+    public Vector3 GetPlayerPosition()
+    {
+        return transform.position;
+    }
 }

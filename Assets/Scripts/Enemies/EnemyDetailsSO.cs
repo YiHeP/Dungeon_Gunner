@@ -20,12 +20,18 @@ public class EnemyDetailsSO : ScriptableObject
     #endregion
     public GameObject enemyPrefab;
 
+    #region Tooltip
+    [Tooltip("玩家距离怪物多远怪物启动追逐")]
+    #endregion
+    public float chaseDistance = 50f;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
     {
         HelpUtilities.ValidateCheckEmptyString(this,nameof(enemyName),enemyName);
         HelpUtilities.ValidateCheckNullValues(this,nameof(enemyPrefab),enemyPrefab);
+        HelpUtilities.ValidateCheckPositiveValues(this, nameof(chaseDistance), chaseDistance, false);
     }
 #endif
     #endregion

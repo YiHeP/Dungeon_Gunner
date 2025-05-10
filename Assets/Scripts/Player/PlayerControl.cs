@@ -82,20 +82,20 @@ public class PlayerControl : MonoBehaviour
         bool rightMouseButtonDown = Input.GetMouseButtonDown(1);
 
         Vector2 direction = new Vector2(horizontalMovement, verticalMovement);
-        if(horizontalMovement != 0 &&  verticalMovement != 0)
+        if(horizontalMovement != 0 &&  verticalMovement != 0)//对角线行走
         {
             direction *= 0.7f;
         }
 
         if(direction != Vector2.zero)
         {
-            if(!rightMouseButtonDown) 
+            if(!rightMouseButtonDown) //没有翻滚
             {
                 player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, moveSpeed);
             }
             else if(playerRollCooldownTimer <=  0f)
             {
-                PlayerRoll((Vector3)direction);
+                PlayerRoll((Vector3)direction);//玩家翻滚
             }
         }
         else
