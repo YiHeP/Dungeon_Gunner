@@ -52,6 +52,7 @@ public static class Settings
     #region a星算法参数
     public const int defaultAStarMovementPenalty = 40;
     public const int perferredPathAStarMovementPenalty = 1;
+    public const int targetFrameRateToSpreadPathfindingOver = 60;
     public const float playerMoveDistanceToRebuildPath = 3f;//玩家移动多少距离怪物就重新构建一条新道路
     public const float enemyPathRebuildCooldown = 2f;//重建道路的冷却时间
     #endregion
