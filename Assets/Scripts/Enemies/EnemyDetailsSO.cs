@@ -25,6 +25,37 @@ public class EnemyDetailsSO : ScriptableObject
     #endregion
     public float chaseDistance = 50f;
 
+    #region Header 敌人材质
+    [Space(10)]
+    [Header("敌人材质")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("敌人站立材质")]
+    #endregion
+    public Material enemyStandarMaterial;
+
+    #region Header 敌人材质细节
+    [Space(10)]
+    [Header("敌人材质细节")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("敌人生成材质持续时间")]
+    #endregion
+    public float enemyMaterializeTime;
+
+    #region Tooltip
+    [Tooltip("敌人生成材质的着色器")]
+    #endregion
+    public Shader enemyMaterializeShader;
+
+    [ColorUsage(true, true)]
+    #region Tooltip
+    [Tooltip("材质颜色")]
+    #endregion
+    public Color enemyMaterializeColor;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
@@ -32,6 +63,9 @@ public class EnemyDetailsSO : ScriptableObject
         HelpUtilities.ValidateCheckEmptyString(this,nameof(enemyName),enemyName);
         HelpUtilities.ValidateCheckNullValues(this,nameof(enemyPrefab),enemyPrefab);
         HelpUtilities.ValidateCheckPositiveValues(this, nameof(chaseDistance), chaseDistance, false);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(enemyStandarMaterial), enemyStandarMaterial);
+        HelpUtilities.ValidateCheckPositiveValues(this,nameof(enemyMaterializeTime), enemyMaterializeTime, true);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(enemyMaterializeShader),enemyMaterializeShader);
     }
 #endif
     #endregion
