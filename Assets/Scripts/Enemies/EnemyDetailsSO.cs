@@ -56,6 +56,41 @@ public class EnemyDetailsSO : ScriptableObject
     #endregion
     public Color enemyMaterializeColor;
 
+    #region Header 敌人武器细节
+    [Space(10)]
+    [Header("敌人武器细节")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("敌人的武器")]
+    #endregion
+    public WeaponsDetailsSO enemyWepapon;
+
+    #region Tooltip
+    [Tooltip("武器发射最小间隔时间")]
+    #endregion
+    public float firingIntervalMin = 0.1f;
+
+    #region Tooltip
+    [Tooltip("武器发射最长间隔时间")]
+    #endregion
+    public float firingIntervalMax = 1f;
+
+    #region Tooltip
+    [Tooltip("敌人发射最短持续时间")]
+    #endregion
+    public float firingDurationMin = 1f;
+
+    #region Tooltip
+    [Tooltip("敌人发射最长持续时间")]
+    #endregion
+    public float firingDurationMax = 2f;
+
+    #region Tooltip
+    [Tooltip("是否需要玩家的视野信息进行开火")]
+    #endregion
+    public bool firingLineOfSightRequired;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
@@ -66,6 +101,10 @@ public class EnemyDetailsSO : ScriptableObject
         HelpUtilities.ValidateCheckNullValues(this, nameof(enemyStandarMaterial), enemyStandarMaterial);
         HelpUtilities.ValidateCheckPositiveValues(this,nameof(enemyMaterializeTime), enemyMaterializeTime, true);
         HelpUtilities.ValidateCheckNullValues(this, nameof(enemyMaterializeShader),enemyMaterializeShader);
+        HelpUtilities.ValidateCheckPositiveRange(this, nameof(firingIntervalMin), firingIntervalMin, nameof(firingIntervalMax),
+            firingIntervalMax, false);
+        HelpUtilities.ValidateCheckPositiveRange(this, nameof(firingDurationMin), firingDurationMin, nameof(firingDurationMax),
+            firingDurationMax, false);
     }
 #endif
     #endregion
