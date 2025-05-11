@@ -91,6 +91,26 @@ public class EnemyDetailsSO : ScriptableObject
     #endregion
     public bool firingLineOfSightRequired;
 
+    #region Header 敌人生命值
+    [Space(10)]
+    [Header("敌人生命值")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("敌人在地牢每个关卡的生命值")]
+    #endregion
+    public EnemyHealthDetail[] enemyHealthDetailsArray;
+
+    #region Tooltip
+    [Tooltip("在被击中后是否会免疫一段时间")]
+    #endregion
+    public bool isImmuneAfterHit = false;
+
+    #region Tooltip
+    [Tooltip("免疫的时长")]
+    #endregion
+    public float hitTmunityTime;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
@@ -105,6 +125,11 @@ public class EnemyDetailsSO : ScriptableObject
             firingIntervalMax, false);
         HelpUtilities.ValidateCheckPositiveRange(this, nameof(firingDurationMin), firingDurationMin, nameof(firingDurationMax),
             firingDurationMax, false);
+        HelpUtilities.ValidateCheckEnumerableValues(this,nameof(enemyHealthDetailsArray),enemyHealthDetailsArray);
+        if(isImmuneAfterHit)
+        {
+            HelpUtilities.ValidateCheckPositiveValues(this,nameof(hitTmunityTime), hitTmunityTime, false);
+        }
     }
 #endif
     #endregion

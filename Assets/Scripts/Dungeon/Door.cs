@@ -69,7 +69,7 @@ public class Door : MonoBehaviour
         animator.SetBool(Settings.open,false);
     }
 
-    public void unLockDoor()
+    public void UnlockDoor()
     {
         doorCollider.enabled = false;
         doorTrigger.enabled = true;

@@ -17,6 +17,7 @@ public static class Settings
     #region 房间设置
     public const float fadeInTime = 0.5f;
     public const int MaxChildCorridors = 3;
+    public const float doorUnlockDelay = 1f;
     #endregion
 
     #region 动画参数
@@ -58,6 +59,10 @@ public static class Settings
     #endregion
 
     #region UI 参数
-    public const float uiAmmoIconSpacing = 4f; 
+    public const float uiAmmoIconSpacing = 4f;
+    #endregion
+
+    #region Header 敌人参数
+    public const int defaultEnemyHealth = 20;
     #endregion
 }

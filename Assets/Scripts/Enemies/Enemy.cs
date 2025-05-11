@@ -28,6 +28,10 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(ReloadWeaponEvent))]
 [RequireComponent(typeof(ReloadWeapon))]
 [RequireComponent(typeof(WeaponReloadEvent))]
+[RequireComponent(typeof(HealthEvent))]
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(Destroyed))]
+[RequireComponent(typeof(DestroyedEvent))]
 #endregion
 
 [DisallowMultipleComponent]
@@ -46,6 +50,9 @@ public class Enemy : MonoBehaviour
     private PolygonCollider2D polygonCollider2D;
     [HideInInspector] public SpriteRenderer[] spriteRendererArray;
     [HideInInspector] public Animator animator;
+    private HealthEvent healthEvent;
+    private Health health;
+
 
     private void Awake()
     {
@@ -61,6 +68,32 @@ public class Enemy : MonoBehaviour
         setActiveWeaponEvent = GetComponent<SetActiveWeaponEvent>();
         aimWeaponEvent = GetComponent<AimWeaponEvent>();
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
+        healthEvent = GetComponent<HealthEvent>();
+        health = GetComponent<Health>();
+    }
+
+    private void OnEnable()
+    {
+        healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
+    }
+
+    private void OnDisable()
+    {
+        healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
+    }
+
+    private void HealthEvent_OnHealthChanged(HealthEvent healthEvent,HealthEventArgs healthEventArgs)
+    {
+        if(healthEventArgs.healthAmount <= 0)
+        {
+            EnemyDestroyed();
+        }
+    }
+
+    private void EnemyDestroyed()
+    {
+        DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
+        destroyedEvent.CallDestroyedEvent();
     }
 
     public void EnemyInitialization(EnemyDetailsSO enemyDetailsSO, int enemySpawnNumber, DungeonLevelSO dungeonLevel)
@@ -68,6 +101,8 @@ public class Enemy : MonoBehaviour
         this.enemyDetails = enemyDetailsSO;
 
         SetEnemyMovementUpdateFrame(enemySpawnNumber);
+
+        SetEnemyStartingHealth(dungeonLevel);
 
         SetEnemyStaringWeapon();
 
@@ -79,6 +114,19 @@ public class Enemy : MonoBehaviour
     private void SetEnemyMovementUpdateFrame(int enemySpawnNumber)
     {
         enemyMovementAI.SetUpdateFrameNumber(enemySpawnNumber % Settings.targetFrameRateToSpreadPathfindingOver);
+    }
+
+    private void SetEnemyStartingHealth(DungeonLevelSO dungeonLevel)
+    {
+        foreach(EnemyHealthDetail enemyHealthDetail in enemyDetails.enemyHealthDetailsArray)
+        {
+            if(enemyHealthDetail.dungeonLevel == dungeonLevel)
+            {
+                health.SetStartingHealth(enemyHealthDetail.enemyHealthAmount);
+                return;
+            }
+        }
+        health.SetStartingHealth(Settings.defaultEnemyHealth);
     }
 
     private void SetEnemyStaringWeapon()
