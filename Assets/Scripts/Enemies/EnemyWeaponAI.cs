@@ -28,7 +28,7 @@ public class EnemyWeaponAI : MonoBehaviour
 
     private void Start()
     {
-        enemyDetails = GetComponent<EnemyDetailsSO>();
+        enemyDetails = enemy.enemyDetails;
 
         firingIntervalTimer = WeaponShootInterval();
 
