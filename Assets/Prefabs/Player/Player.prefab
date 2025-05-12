@@ -302,7 +302,9 @@ GameObject:
   - component: {fileID: -8229669757321502389}
   - component: {fileID: -3099106999637604696}
   - component: {fileID: 1750788508922387375}
+  - component: {fileID: 7547177749027898468}
   - component: {fileID: 4671260183653969238}
+  - component: {fileID: 6720083349986820635}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -340,6 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDamageable: 1
+  enemy: {fileID: 0}
 --- !u!210 &6230967121900560719
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -526,7 +529,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDetails: {fileID: 0}
+  healthEvent: {fileID: 0}
   health: {fileID: 0}
+  destroyedEvent: {fileID: 0}
   idleEvent: {fileID: 0}
   aimWeaponEvent: {fileID: 0}
   setActiveWeaponEvent: {fileID: 0}
@@ -539,6 +544,7 @@ MonoBehaviour:
   weaponFireEvent: {fileID: 0}
   reloadWeaponEvent: {fileID: 0}
   weaponReloadEvent: {fileID: 0}
+  playerControl: {fileID: 0}
 --- !u!114 &8700630976697133044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDetails: {fileID: 11400000, guid: 09c9ed4c9fc822e45927e491ec89679e, type: 2}
+  isPlayerRolling: 0
 --- !u!114 &7156693141539836057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,6 +794,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9668b9c2086dc194b89b29885d464b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7547177749027898468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6230967121900560711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8877d7a2f5da6864bb09c35b9262117c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contactDamageAmount: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 131072
 --- !u!114 &4671260183653969238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,6 +822,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc7b0e74bb0cb142a458177aa5b4c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6720083349986820635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6230967121900560711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7edfdafdebeb3b64a8eb9edc9d98e598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contactDamageAmount: 0
 --- !u!1 &6561170866322265561
 GameObject:
   m_ObjectHideFlags: 0

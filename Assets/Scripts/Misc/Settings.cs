@@ -66,4 +66,8 @@ public static class Settings
     #region Header 敌人参数
     public const int defaultEnemyHealth = 20;
     #endregion
+
+    #region 接触伤害参数
+    public const float contactDamageCollisionResetDelay = 0.5f;
+    #endregion
 }

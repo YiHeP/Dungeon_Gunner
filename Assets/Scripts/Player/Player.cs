@@ -33,6 +33,9 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(DealContactDamage))]
+[RequireComponent(typeof(ReceiveContactDamage))]
+
 [DisallowMultipleComponent]
 #endregion
 
@@ -99,7 +102,6 @@ public class Player : MonoBehaviour
 
     private void HealthEvent_OnHealthChanged(HealthEvent healthEvent,HealthEventArgs healthEventArgs)
     {
-        Debug.Log("ÉúÃüÖµ£º" + healthEventArgs.healthAmount);
         if(healthEventArgs.healthAmount <= 0 )
         {
             destroyedEvent.CallDestroyedEvent(true);

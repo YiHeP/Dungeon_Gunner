@@ -69,15 +69,6 @@ public class Health : MonoBehaviour
             PostHitImmunity();
         }
 
-        if(isDamageable && isRolling)
-        {
-            Debug.Log("Íæ¼Ò·­¹ö¶ã±ÜÁË×Óµ¯");
-        }
-
-        if(!isDamageable && !isRolling)
-        {
-            Debug.Log("ÃâÒßÉËº¦ÖÐ");
-        }
     }
 
     private void CallHealthEvent(int damageAmount)

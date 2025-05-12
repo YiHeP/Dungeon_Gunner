@@ -32,6 +32,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Destroyed))]
 [RequireComponent(typeof(DestroyedEvent))]
+[RequireComponent(typeof(DealContactDamage))]
 #endregion
 
 [DisallowMultipleComponent]
