@@ -24,6 +24,7 @@ public class ScoreUI : MonoBehaviour
 
     private void StaticEventHandler_OnScoreChanged(ScoreChangedArgs scoreChangedArgs)
     {
-        scoreTextTMP.text = "得分：" + scoreChangedArgs.score.ToString("###,##0");
+        scoreTextTMP.text = "得分：" + scoreChangedArgs.score.ToString("###,##0") + 
+            "\n倍率：x" + scoreChangedArgs.multiplier;
     }
 }

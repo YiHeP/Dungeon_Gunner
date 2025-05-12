@@ -45,6 +45,11 @@ public class Ammo : MonoBehaviour, IFireable
 
         if(ammoRange < 0f)
         {
+            if(ammoDetails.isPlayerAmmo)
+            {
+                StaticEventHandler.CallMultiplierEvent(false);
+            }
+
             DisableAmmo();
         }
     }
@@ -64,11 +69,30 @@ public class Ammo : MonoBehaviour, IFireable
     {
         Health health = collision.GetComponent<Health>();
 
+        bool enemtHit = false;
+
         if(health != null)
         {
             isCollider = true;
 
             health.TakeDamage(ammoDetails.ammoDamage);
+
+            if(health.enemy !=  null)
+            {
+                enemtHit = true;
+            }
+        }
+
+        if(ammoDetails.isPlayerAmmo)
+        {
+            if(enemtHit)
+            {
+                StaticEventHandler.CallMultiplierEvent(true);
+            }
+            else
+            {
+                StaticEventHandler.CallMultiplierEvent(false);
+            }
         }
     }
 
