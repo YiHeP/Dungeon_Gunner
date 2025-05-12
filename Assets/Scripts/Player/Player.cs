@@ -5,7 +5,10 @@ using UnityEngine.Rendering;
 
 
 #region 所需组件
+[RequireComponent(typeof(HealthEvent))]
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(DestroyedEvent))]
+[RequireComponent(typeof(Destroyed))]
 [RequireComponent(typeof(PlayerControl))]
 [RequireComponent(typeof(AnimatePlayer))]
 [RequireComponent(typeof(MovementByVelocityEvent))]
@@ -37,7 +40,9 @@ using UnityEngine.Rendering;
 public class Player : MonoBehaviour
 {
     [HideInInspector] public PlayerDetailsSO playerDetails;
+    [HideInInspector] public HealthEvent healthEvent;
     [HideInInspector] public Health health;
+    [HideInInspector] public DestroyedEvent destroyedEvent;
     [HideInInspector] public IdleEvent idleEvent;
     [HideInInspector] public AimWeaponEvent aimWeaponEvent;
     [HideInInspector] public SetActiveWeaponEvent setActiveWeaponEvent;
@@ -55,7 +60,9 @@ public class Player : MonoBehaviour
     public void Awake()
     {
         animator = GetComponent<Animator>();
+        healthEvent = GetComponent<HealthEvent>();
         health = GetComponent<Health>();
+        destroyedEvent = GetComponent<DestroyedEvent>();
         idleEvent = GetComponent<IdleEvent>();
         aimWeaponEvent = GetComponent<AimWeaponEvent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -76,6 +83,25 @@ public class Player : MonoBehaviour
         CreatePlayerStaringWeapons();
 
         SetPlayerHealth();
+    }
+
+    private void OnEnable()
+    {
+        healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
+    }
+
+    private void OnDisable()
+    {
+        healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
+    }
+
+    private void HealthEvent_OnHealthChanged(HealthEvent healthEvent,HealthEventArgs healthEventArgs)
+    {
+        Debug.Log("生命值：" + healthEventArgs.healthAmount);
+        if(healthEventArgs.healthAmount <= 0 )
+        {
+            destroyedEvent.CallDestroyedEvent(true);
+        }
     }
 
     private void CreatePlayerStaringWeapons()
