@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
@@ -31,6 +32,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [HideInInspector] public GameState previousGameState;
     private long gameScore;
     private int scoreMultiplier;
+    private InstantiatedRoom bossRoom;
 
     protected override void Awake()
     {
@@ -54,6 +56,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         StaticEventHandler.OnPointScored += StaticEventHandler_OnPointScored;
 
         StaticEventHandler.OnMultiplier += StaticEventHandler_OnMultiplier;
+
+        StaticEventHandler.OnRoomEnemiesDefeated += StaticEventHandler_OnRoomEnemiesDefeated;
+
+        player.destroyedEvent.OnDestroyed += Player_OnDestroyed;
     }
 
     private void OnDisable()
@@ -63,6 +69,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         StaticEventHandler.OnPointScored -= StaticEventHandler_OnPointScored;
 
         StaticEventHandler.OnMultiplier -= StaticEventHandler_OnMultiplier;
+
+        StaticEventHandler.OnRoomEnemiesDefeated -= StaticEventHandler_OnRoomEnemiesDefeated;
+
+        player.destroyedEvent.OnDestroyed -= Player_OnDestroyed;
     }
 
     private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
@@ -88,6 +98,17 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         StaticEventHandler.CallScoreChangedEvent(gameScore, scoreMultiplier);
     }
 
+    private void StaticEventHandler_OnRoomEnemiesDefeated(RoomEnemiesDefeatedArgs roomEnemiesDefeatedArgs)
+    {
+        RoomEnemiesDefeated();
+    }
+
+    private void Player_OnDestroyed(DestroyedEvent destroyedEvent,DestroyedEventArgs destroyedEventArgs)
+    {
+        previousGameState = gameState;
+        gameState = GameState.gameLost;
+    }
+
     private void Start()
     {
         gameState = GameState.gameStarted;
@@ -106,8 +127,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         //{
         //    gameState = GameState.gameStarted;
         //}
-
-
     }
 
     private void HandleGameState()
@@ -117,6 +136,26 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             case GameState.gameStarted:
                 PlayerDungeonLevel(currentDungeonLevelListIndex);
                 gameState = GameState.playingLevel;
+                RoomEnemiesDefeated();
+                break;
+            case GameState.levelCompleted:
+                StartCoroutine(LevelCompleted());
+                break;
+            case GameState.gameWon:
+                if(previousGameState != GameState.gameWon)
+                {
+                    StartCoroutine(GameWon());
+                }
+                break;
+            case GameState.gameLost:
+                if(previousGameState != GameState.gameLost)
+                {
+                    StopAllCoroutines();
+                    StartCoroutine(GameLost());
+                }
+                break;
+            case GameState.restartGame:
+                RestartGame();
                 break;
         }
     }
@@ -132,7 +171,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         return player; 
     }
 
-    private void PlayerDungeonLevel(int dungeonLevelListIndex)
+    private void PlayerDungeonLevel(int dungeonLevelListIndex)//构建新地牢
     {
         bool dungeonBuiltSuccessful = DungeonBuilder.Instance.GenerateDungeon(dungeonLevelList[dungeonLevelListIndex]);
         if(!dungeonBuiltSuccessful)
@@ -143,6 +182,45 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         player.gameObject.transform.position = new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f, (currentRoom
             .lowerBounds.y + currentRoom.upperBounds.y), 0f);
         player.gameObject.transform.position = HelpUtilities.GetSpawnPositionNearestToPlayer(player.gameObject.transform.position);
+    }
+
+    private void RoomEnemiesDefeated()
+    {
+        bool isDungeonClearOfRegularEnemies = true;
+        bossRoom = null;
+
+        foreach(KeyValuePair<string,Room> keyValuePair in DungeonBuilder.Instance.dungeonBuilderRoomDictionary)
+        {
+            if(keyValuePair.Value.roomNodeType.isBossRoom)
+            {
+                bossRoom = keyValuePair.Value.instantiatedRoom;
+                continue;
+            }
+
+            if(!keyValuePair.Value.isCleanedOfEnemies)
+            {
+                isDungeonClearOfRegularEnemies = false;
+                break;
+            }
+        }
+
+        if((isDungeonClearOfRegularEnemies && bossRoom == null) || (isDungeonClearOfRegularEnemies && bossRoom.room.isCleanedOfEnemies))
+        {
+            if(currentDungeonLevelListIndex < dungeonLevelList.Count - 1)
+            {
+                gameState = GameState.levelCompleted;
+            }
+            else
+            {
+                gameState = GameState.gameWon;
+            }
+        }
+        else if(isDungeonClearOfRegularEnemies)
+        {
+            gameState = GameState.bossStage;
+
+            StartCoroutine(BossStage());
+        }
     }
 
     public Room GetCurrentRoom()
@@ -158,6 +236,59 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     public DungeonLevelSO GetCurrentDungeonLevel()
     {
         return dungeonLevelList[currentDungeonLevelListIndex];
+    }
+
+    private IEnumerator BossStage()
+    {
+        bossRoom.gameObject.SetActive(true);
+        bossRoom.UnlockDoors(0);
+        yield return new WaitForSeconds(2);
+
+        Debug.Log("消灭boss");
+    }
+    
+    private IEnumerator LevelCompleted()
+    {
+        gameState = GameState.playingLevel;
+
+        yield return new WaitForSeconds(2);
+
+        Debug.Log("关卡继续");
+
+        while(!Input.GetKeyDown(KeyCode.Return))
+        {
+            yield return null;
+        }
+        yield return null;
+        currentDungeonLevelListIndex++;
+        PlayerDungeonLevel(currentDungeonLevelListIndex);
+    }
+
+    private IEnumerator GameWon()
+    {
+        previousGameState = GameState.gameWon;
+
+        Debug.Log("游戏胜利");
+
+        yield return new WaitForSeconds(10);
+
+        gameState = GameState.restartGame;
+    }
+
+    private IEnumerator GameLost()
+    {
+        previousGameState = GameState.gameLost;
+
+        Debug.Log("游戏失败");
+
+        yield return new WaitForSeconds(10);
+
+        gameState = GameState.restartGame;
+    }
+
+    private void RestartGame()
+    {
+        SceneManager.LoadScene("MainGameScene");
     }
 
     #region Validation
