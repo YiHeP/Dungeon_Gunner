@@ -79,6 +79,11 @@ public class GameResources : MonoBehaviour
     #endregion
     public GameObject ammoIconPrefab;
 
+    #region Tooltip
+    [Tooltip("填入玩家生命值图标")]
+    #endregion
+    public GameObject heartIconPrefab;
+
     #region Header 声音
     [Space(10)]
     [Header("声音")]
