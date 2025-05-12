@@ -10,6 +10,12 @@ public class Health : MonoBehaviour
     private int currentHealth;
     private HealthEvent healthEvent;
     private Player player;
+    private Coroutine immunityCoroutine;
+    private bool isImmuneAfterHit = false;
+    private float immunityTime = 0f;
+    private SpriteRenderer spriteRenderer = null;
+    private const float spriteFlashInterval = 0.2f;
+    private WaitForSeconds WaitForSecondsSpriteFlashInterval = new WaitForSeconds(spriteFlashInterval);
 
     [HideInInspector] public bool isDamageable = true;
     [HideInInspector] public Enemy enemy;
@@ -25,6 +31,25 @@ public class Health : MonoBehaviour
 
         player = GetComponent<Player>();
         enemy = GetComponent<Enemy>();
+
+        if(player != null)
+        {
+            if(player.playerDetails.isImmuneAfterHit)
+            {
+                isImmuneAfterHit = true;
+                immunityTime = player.playerDetails.hitImmunityTime;
+                spriteRenderer = player.spriteRenderer;
+            }
+        }
+        else if(enemy != null)
+        {
+            if(enemy.enemyDetails.isImmuneAfterHit)
+            {
+                isImmuneAfterHit = true;
+                immunityTime = enemy.enemyDetails.hitTmunityTime;
+                spriteRenderer = enemy.spriteRendererArray[0];
+            }
+        }
     }
 
     public void TakeDamage(int damageAmount)
@@ -40,11 +65,18 @@ public class Health : MonoBehaviour
         {
             currentHealth -= damageAmount;
             CallHealthEvent(damageAmount);
+
+            PostHitImmunity();
         }
 
         if(isDamageable && isRolling)
         {
             Debug.Log("Íæ¼Ò·­¹ö¶ã±ÜÁË×Óµ¯");
+        }
+
+        if(!isDamageable && !isRolling)
+        {
+            Debug.Log("ÃâÒßÉËº¦ÖÐ");
         }
     }
 
@@ -64,6 +96,38 @@ public class Health : MonoBehaviour
         return startingHealth;
     }
 
+    private void PostHitImmunity()
+    {
+        if (gameObject.activeSelf == false) return;
 
+        if(isImmuneAfterHit)
+        {
+            if(immunityCoroutine != null)
+                StopCoroutine(immunityCoroutine);
+
+            immunityCoroutine = StartCoroutine(PostHitImmunityRoutine(immunityTime,spriteRenderer));
+        }
+    }
+
+    private IEnumerator PostHitImmunityRoutine(float immunityTime,SpriteRenderer spriteRenderer)
+    {
+        int iterations = Mathf.RoundToInt(immunityTime / spriteFlashInterval / 2f);
+        isDamageable = false;
+        while(iterations > 0)
+        {
+            spriteRenderer.color = Color.red;
+
+            yield return WaitForSecondsSpriteFlashInterval;
+
+            spriteRenderer.color = Color.white;
+
+            yield return WaitForSecondsSpriteFlashInterval;
+
+            iterations--;
+
+            yield return null;
+        }
+        isDamageable = true;
+    }
 
 }

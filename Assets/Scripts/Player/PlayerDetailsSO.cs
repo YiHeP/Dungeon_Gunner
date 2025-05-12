@@ -33,6 +33,16 @@ public class PlayerDetailsSO : ScriptableObject
     #endregion
     public int PlayerHealthAmount;
 
+    #region Tooltip
+    [Tooltip("玩家是否在被击中后有免疫能力")]
+    #endregion
+    public bool isImmuneAfterHit = false;
+
+    #region Tooltip
+    [Tooltip("免疫时长")]
+    #endregion
+    public float hitImmunityTime;
+
     #region Header 武器
     [Space(10)]
     [Header("武器")]
@@ -74,6 +84,11 @@ public class PlayerDetailsSO : ScriptableObject
         HelpUtilities.ValidateCheckNullValues(this, nameof(runtimeAnimatorController), runtimeAnimatorController);
         HelpUtilities.ValidateCheckNullValues(this, nameof(staringWeapon),staringWeapon);
         HelpUtilities.ValidateCheckEnumerableValues(this,nameof(stasrtingWeaponList), stasrtingWeaponList);
+
+        if(isImmuneAfterHit)
+        {
+            HelpUtilities.ValidateCheckPositiveValues(this,nameof(hitImmunityTime),hitImmunityTime,false);
+        }
     }
 #endif
     #endregion

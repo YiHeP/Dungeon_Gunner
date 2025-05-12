@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
     private WaitForFixedUpdate waitForFixedUpdate;
     private float playerRollCooldownTimer = 0f;
 
-    [HideInInspector]public bool isPlayerRolling = false;
+    [HideInInspector] public bool isPlayerRolling = false;
     private void Awake()
     {
         player = GetComponent<Player>();
