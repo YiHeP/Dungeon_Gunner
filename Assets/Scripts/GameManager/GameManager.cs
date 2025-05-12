@@ -29,6 +29,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     [HideInInspector] public GameState gameState;
     [HideInInspector] public GameState previousGameState;
+    private long gameScore;
 
     protected override void Awake()
     {
@@ -48,11 +49,15 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void OnEnable()
     {
         StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+
+        StaticEventHandler.OnPointScored += StaticEventHandler_OnPointScored;
     }
 
     private void OnDisable()
     {
         StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
+
+        StaticEventHandler.OnPointScored -= StaticEventHandler_OnPointScored;
     }
 
     private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
@@ -60,10 +65,19 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         SetCurrentRoom(roomChangedEventArgs.room);
     }
 
+    private void StaticEventHandler_OnPointScored(PointScoredArgs pointScoredArgs)
+    {
+        gameScore += pointScoredArgs.points;
+
+        StaticEventHandler.CallScoreChangedEvent(gameScore);
+    }
+
     private void Start()
     {
         gameState = GameState.gameStarted;
         previousGameState = GameState.gameStarted;
+
+        gameScore = 0;
     }
 
     private void Update()

@@ -8,13 +8,14 @@ public class DestroyedEvent : MonoBehaviour
 {
     public event Action<DestroyedEvent,DestroyedEventArgs> OnDestroyed;
 
-    public void CallDestroyedEvent(bool isPlayerDied)
+    public void CallDestroyedEvent(bool isPlayerDied,int points)
     {
-        OnDestroyed?.Invoke(this,new DestroyedEventArgs() { isPlayDied = isPlayerDied });
+        OnDestroyed?.Invoke(this,new DestroyedEventArgs() { isPlayDied = isPlayerDied , points = points});
     }
 }
 
 public class DestroyedEventArgs:EventArgs
 {
     public bool isPlayDied;
+    public int points;
 }

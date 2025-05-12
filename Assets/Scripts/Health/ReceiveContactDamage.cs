@@ -8,7 +8,7 @@ public class ReceiveContactDamage : MonoBehaviour
 {
     #region Header
     [Space(10)]
-    [Header("近战伤害量")]
+    [Header("接受的近战伤害量")]
     #endregion
     [SerializeField] private int contactDamageAmount;
     private Health health;

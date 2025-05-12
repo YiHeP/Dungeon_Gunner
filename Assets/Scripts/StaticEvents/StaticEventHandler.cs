@@ -19,6 +19,20 @@ public static class StaticEventHandler
         OnRoomEnemiesDefeated?.Invoke(new RoomEnemiesDefeatedArgs() { room = room });
     }
 
+    public static event Action<PointScoredArgs> OnPointScored;
+
+    public static void CallPointsScoredEvent(int points)
+    {
+        OnPointScored?.Invoke(new PointScoredArgs() {  points = points });
+    }
+
+    public static event Action<ScoreChangedArgs> OnScoreChanged;
+
+    public static void CallScoreChangedEvent(long score)
+    {
+        OnScoreChanged?.Invoke(new ScoreChangedArgs() { score = score });
+    }
+
 }
 
 public class RoomChangedEventArgs : EventArgs
@@ -29,4 +43,14 @@ public class RoomChangedEventArgs : EventArgs
 public class RoomEnemiesDefeatedArgs:EventArgs
 {
     public Room room;
+}
+
+public class PointScoredArgs:EventArgs
+{
+    public int points;
+}
+
+public class ScoreChangedArgs:EventArgs
+{
+    public long score;
 }
