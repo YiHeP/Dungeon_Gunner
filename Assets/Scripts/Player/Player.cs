@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public WeaponFireEvent weaponFireEvent;
     [HideInInspector] public ReloadWeaponEvent reloadWeaponEvent;
     [HideInInspector] public WeaponReloadEvent weaponReloadEvent;
+    [HideInInspector] public PlayerControl playerControl;
 
     public List<Weapon> weaponList = new List<Weapon>();
     public void Awake()
@@ -74,6 +75,7 @@ public class Player : MonoBehaviour
         weaponFireEvent = GetComponent<WeaponFireEvent>();
         reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
         weaponReloadEvent = GetComponent<WeaponReloadEvent>();
+        playerControl = GetComponent<PlayerControl>();
     }
 
     public void Initialize(PlayerDetailsSO playerDetails)
