@@ -111,6 +111,11 @@ public class EnemyDetailsSO : ScriptableObject
     #endregion
     public float hitTmunityTime;
 
+    #region Tooltip
+    [Tooltip("是否要显示血条")]
+    #endregion
+    public bool isHealthBarDisplayed = false;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
