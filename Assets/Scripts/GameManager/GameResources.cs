@@ -36,7 +36,7 @@ public class GameResources : MonoBehaviour
     #region Tooltip
     [Tooltip("当前玩家的可编程脚本物体")]
     #endregion
-    public CurrentPlayerSO currentPlayerSO;
+    public CurrentPlayerSO currentPlayer;
 
     #region Header 材料
     [Space(10)]
@@ -102,7 +102,7 @@ public class GameResources : MonoBehaviour
     public void OnValidate()
     {
         HelpUtilities.ValidateCheckNullValues(this, nameof(roomNodeTypelist), roomNodeTypelist);
-        HelpUtilities.ValidateCheckNullValues(this, nameof(currentPlayerSO), currentPlayerSO);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(currentPlayer), currentPlayer);
         HelpUtilities.ValidateCheckNullValues(this, nameof(dimmedMaterial), dimmedMaterial);
         HelpUtilities.ValidateCheckNullValues(this, nameof(variableLitShader), variableLitShader);
         HelpUtilities.ValidateCheckNullValues(this, nameof(ammoIconPrefab), ammoIconPrefab);

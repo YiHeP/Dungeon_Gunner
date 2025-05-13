@@ -1,11 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
+    #region Header 物品参考
+    [Space(10)]
+    [Header("物品参考")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("填入fadeScreen中的messageText")]
+    #endregion
+    [SerializeField] private TextMeshProUGUI messageTextTMP;
+
+    #region Tooltip
+    [Tooltip("填入fadeScreen中的canvas groups")]
+    #endregion
+    [SerializeField] private CanvasGroup canvasGroup;
+
     #region 地牢关卡
     [Space(10)]
     [Header("地牢关卡")]
@@ -37,7 +54,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        playerDetails = GameResources.Instance.currentPlayerSO.playerDetails;
+        playerDetails = GameResources.Instance.currentPlayer.playerDetails;
 
         InstantiatePlayer();
     }
@@ -116,6 +133,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         gameScore = 0;
         scoreMultiplier = 1;
+
+        StartCoroutine(Fade(0f,1f,0f,Color.black));
     }
 
     private void Update()
@@ -160,6 +179,20 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         }
     }
 
+    private IEnumerator Fade(float startFadeAlpha,  float endFadeAlpha, float fadeSeconds,Color color)
+    {
+        Image image = canvasGroup.GetComponent<Image>();
+        image.color = color;
+
+        float time = 0;
+        while(time <= fadeSeconds)
+        {
+            time += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(startFadeAlpha, endFadeAlpha, time/fadeSeconds);
+            yield return null;
+        }
+    }
+
     public void SetCurrentRoom(Room room)
     {
         previousRoom = currentRoom; 
@@ -174,15 +207,65 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void PlayerDungeonLevel(int dungeonLevelListIndex)//构建新地牢
     {
         bool dungeonBuiltSuccessful = DungeonBuilder.Instance.GenerateDungeon(dungeonLevelList[dungeonLevelListIndex]);
+
         if(!dungeonBuiltSuccessful)
         {
             Debug.Log("构建地牢失败");
         }
         StaticEventHandler.CallRoomChangedEvent(currentRoom);
+
         player.gameObject.transform.position = new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f, (currentRoom
             .lowerBounds.y + currentRoom.upperBounds.y), 0f);
+
         player.gameObject.transform.position = HelpUtilities.GetSpawnPositionNearestToPlayer(player.gameObject.transform.position);
+
+        StartCoroutine(DisPlayDungeonLevelText());
     }
+
+    private IEnumerator DisPlayDungeonLevelText()
+    {
+        StartCoroutine(Fade(0f,1f,0f,Color.black));
+
+        GetPlayer().playerControl.DisablePlayerControl();
+
+        string messageText = "关卡：" + (currentDungeonLevelListIndex + 1).ToString() + "\n\n" + dungeonLevelList
+            [currentDungeonLevelListIndex].levelName.ToString();
+
+        yield return StartCoroutine(DisplayMessageRoutine(messageText,Color.white,2f));
+
+        GetPlayer().playerControl.EnablePlayerControl();
+
+        yield return StartCoroutine(Fade(1f,0f,2f,Color.black));
+
+    }
+
+    private IEnumerator DisplayMessageRoutine(string message, Color color,float displayTime)
+    {
+        messageTextTMP.SetText(message);
+        messageTextTMP.color = color;
+
+        if(displayTime > 0f)
+        {
+            float time = displayTime;
+
+            while(time > 0f && !Input.GetKeyDown(KeyCode.Return))
+            {
+                time -= Time.deltaTime;
+                yield return null;
+            }
+        }
+        else
+        {
+            while(!Input.GetKeyDown(KeyCode.Return))
+            {
+                yield return null;
+            }
+        }
+        yield return null;
+
+        messageTextTMP.SetText("");
+    }
+
 
     private void RoomEnemiesDefeated()
     {
@@ -244,7 +327,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         bossRoom.UnlockDoors(0);
         yield return new WaitForSeconds(2);
 
-        Debug.Log("消灭boss");
+        yield return StartCoroutine(Fade(0f, 1f, 2f, new Color(0f, 0f, 0f, 0.4f)));
+
+        yield return StartCoroutine(DisplayMessageRoutine("做的不错" + GameResources.Instance.currentPlayer.playerName + "!能够存活至此处\n\n"+
+            "现在你需要找到并击败boss,祝你好运！",Color.white,5f));
+
+        yield return StartCoroutine(Fade(1f, 0f, 2f, new Color(0f, 0f, 0f, 0.4f)));
     }
     
     private IEnumerator LevelCompleted()
@@ -253,9 +341,16 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         yield return new WaitForSeconds(2);
 
-        Debug.Log("关卡继续");
+        yield return StartCoroutine(Fade(0f, 1f, 2f, new Color(0f, 0f, 0f, 0.4f)));
 
-        while(!Input.GetKeyDown(KeyCode.Return))
+        yield return StartCoroutine(DisplayMessageRoutine("干得好" + GameResources.Instance.currentPlayer.playerName + "!\n\n" +
+            "你成功的在这层地牢中生存下来了！", Color.white, 5f));
+
+        yield return StartCoroutine(DisplayMessageRoutine("收集所有战利品，按下Return键\n\n前往下一层地牢", Color.white, 5f));
+
+        yield return StartCoroutine(Fade(1f, 0f, 2f, new Color(0f, 0f, 0f, 0.4f)));
+
+        while (!Input.GetKeyDown(KeyCode.Return))
         {
             yield return null;
         }
@@ -268,9 +363,16 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         previousGameState = GameState.gameWon;
 
-        Debug.Log("游戏胜利");
+        GetPlayer().playerControl.DisablePlayerControl();
 
-        yield return new WaitForSeconds(10);
+        yield return StartCoroutine(Fade(0f, 1f, 2f, Color.black));
+
+        yield return StartCoroutine(DisplayMessageRoutine("恭喜你" + GameResources.Instance.currentPlayer.playerName + "!\n\n" +
+            "你成功的从地牢中撤离！", Color.white, 3f));
+
+        yield return StartCoroutine(DisplayMessageRoutine("你的得分为："+ gameScore.ToString("###,##0"), Color.white, 4f));
+
+        yield return StartCoroutine(DisplayMessageRoutine("按下Return键重新开始游戏", Color.white, 0f));
 
         gameState = GameState.restartGame;
     }
@@ -279,9 +381,25 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         previousGameState = GameState.gameLost;
 
-        Debug.Log("游戏失败");
+        GetPlayer().playerControl.DisablePlayerControl();
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(1f);
+
+        yield return StartCoroutine(Fade(0f, 1f, 2f, Color.black));
+
+        Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
+
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.gameObject.SetActive(false);
+        }
+
+        yield return StartCoroutine(DisplayMessageRoutine("非常遗憾" + GameResources.Instance.currentPlayer.playerName + "!\n\n" +
+            "你于地牢之中陨落！", Color.white, 3f));
+
+        yield return StartCoroutine(DisplayMessageRoutine("你的得分为：" + gameScore.ToString("###,##0"), Color.white, 4f));
+
+        yield return StartCoroutine(DisplayMessageRoutine("按下Return键重新开始游戏", Color.white, 0f));
 
         gameState = GameState.restartGame;
     }
@@ -297,6 +415,9 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void OnValidate()
     {
         HelpUtilities.ValidateCheckEnumerableValues(this, nameof(dungeonLevelList), dungeonLevelList);
+        HelpUtilities.ValidateCheckNullValues(this,nameof(messageTextTMP), messageTextTMP);
+        HelpUtilities.ValidateCheckNullValues(this,nameof(canvasGroup),canvasGroup);
+
     }
 
 #endif
