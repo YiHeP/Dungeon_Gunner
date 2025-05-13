@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public static class Settings
 {
@@ -39,6 +40,9 @@ public static class Settings
     public static float baseSpeedForEnemyAnimator = 3f;
 
     public static int open = Animator.StringToHash("open");
+
+    public static int destroy = Animator.StringToHash("destroy");
+    public static String stateDestroyed = "Destroyed";
     #endregion
 
     #region 游戏物体标签
