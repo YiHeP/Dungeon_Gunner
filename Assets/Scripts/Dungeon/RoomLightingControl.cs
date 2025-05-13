@@ -29,6 +29,10 @@ public class RoomLightingControl : MonoBehaviour
         {
             FadeInRoomLighting();
 
+            instantiatedRoom.ActivateEnvironmentGameObjects();
+
+            FadeInEnvironmentLighting();
+
             FadeInDoor();
 
             instantiatedRoom.room.isLit = true;
@@ -69,6 +73,39 @@ public class RoomLightingControl : MonoBehaviour
         {
             DoorLightingControl doorLightingControl = door.GetComponentInChildren<DoorLightingControl>();
             doorLightingControl.FadeInDoor(door);
+        }
+    }
+
+    private void FadeInEnvironmentLighting()
+    {
+        Material material = new Material(GameResources.Instance.variableLitShader);
+
+        Environment[] environmentComponents = GetComponentsInChildren<Environment>();
+
+        foreach(Environment environmentComponent in environmentComponents)
+        {
+            if(environmentComponent.spriteRenderer !=  null)
+            {
+                environmentComponent.spriteRenderer.material = material;
+            }
+        }
+        StartCoroutine(FadeInEnvironmentLightingRoutine(material,environmentComponents));
+    }
+
+    private IEnumerator FadeInEnvironmentLightingRoutine(Material material, Environment[] environmentComponents)
+    {
+        for (float i = 0.05f; i <= 1f; i += Time.deltaTime / Settings.fadeInTime)
+        {
+            material.SetFloat("Alpha_Slider", i);
+            yield return null;
+        }
+
+        foreach(Environment environment in environmentComponents)
+        {
+            if(environment.spriteRenderer != null)
+            {
+                environment.spriteRenderer.material = GameResources.Instance.litMaterial;
+            }
         }
     }
 

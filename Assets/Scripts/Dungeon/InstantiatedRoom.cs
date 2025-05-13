@@ -18,6 +18,16 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public int[,] aStarMovementPenalty;
     [HideInInspector] public Bounds roomCollisionBounds;
 
+    #region Header 物品的引用
+    [Space(10)]
+    [Header("物品的引用")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("填入环境物品的锚点")]
+    #endregion
+    [SerializeField] private GameObject environmentGameObject;
+
     private BoxCollider2D boxCollider2D;
 
     private void Awake()
@@ -297,4 +307,30 @@ public class InstantiatedRoom : MonoBehaviour
         }
         EnableRoomCollider();
     }
+
+    public void ActivateEnvironmentGameObjects()
+    {
+        if(environmentGameObject !=  null)
+        {
+            environmentGameObject.SetActive(true);
+        }
+    }
+
+    public void DeactivateEnvironmentGameObjects()
+    {
+        if(environmentGameObject != null)
+        {
+            environmentGameObject.SetActive(false);
+        }
+    }
+
+    #region Validation
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        HelpUtilities.ValidateCheckNullValues(this, nameof(environmentGameObject), environmentGameObject);
+
+    }
+#endif
+    #endregion
 }

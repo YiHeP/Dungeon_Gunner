@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -2609711782588927798}
   - component: {fileID: -7418663036248465168}
   - component: {fileID: 1867751060461701765}
+  - component: {fileID: 5956851304893855624}
   m_Layer: 17
   m_Name: DestroyableItem
   m_TagString: Untagged
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a4ea43fe7ddf099428e90d7b7ac44139, type: 2}
+  - {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -191,3 +192,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contactDamageAmount: 5
+--- !u!114 &5956851304893855624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3106093583620185427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9e3e83aacb6e94b82a48edf8270d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6843870533000243301}
