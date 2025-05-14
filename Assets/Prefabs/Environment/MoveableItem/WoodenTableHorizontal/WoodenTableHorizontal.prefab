@@ -115,9 +115,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodenTableHorizontal
       objectReference: {fileID: 0}
+    - target: {fileID: 6297980595965460916, guid: d683a4092a66dc24c952908875609740, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 40784eca417d06f46bbe3a19dde4e04e, type: 2}
+    - target: {fileID: 7735701196391009467, guid: d683a4092a66dc24c952908875609740, type: 3}
+      propertyPath: m_Mass
+      value: 99999
+      objectReference: {fileID: 0}
     - target: {fileID: 7735701196391009467, guid: d683a4092a66dc24c952908875609740, type: 3}
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d683a4092a66dc24c952908875609740, type: 3}
+--- !u!1 &1008575797765267135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5872602529937453851, guid: d683a4092a66dc24c952908875609740, type: 3}
+  m_PrefabInstance: {fileID: 6665471187593833892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1197532315682553506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008575797765267135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee29934a9dc5984eb8ab97d5fc72907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemMass: 8

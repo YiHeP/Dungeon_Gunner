@@ -92,10 +92,16 @@ public class GameResources : MonoBehaviour
     [Tooltip("填充声音混合控制器组")]
     #endregion
     public AudioMixerGroup soundMasterMixrGroup;
+
     #region Tooltip
     [Tooltip("门开关的音效")]
     #endregion
     public SoundEffectSO doorOpenCloseSoundEffect;
+
+    #region Tooltip
+    [Tooltip("桌子推到的音效")]
+    #endregion
+    public SoundEffectSO tableFilp;
 
     #region Validation
 #if UNITY_EDITOR
@@ -110,6 +116,8 @@ public class GameResources : MonoBehaviour
         HelpUtilities.ValidateCheckNullValues(this, nameof(doorOpenCloseSoundEffect), doorOpenCloseSoundEffect);
         HelpUtilities.ValidateCheckEnumerableValues(this, nameof(enemyUnwalkableCollisionTilesArray), enemyUnwalkableCollisionTilesArray);
         HelpUtilities.ValidateCheckNullValues(this, nameof(perferredEnemyPathTile), perferredEnemyPathTile);
+        HelpUtilities.ValidateCheckNullValues(this,nameof(tableFilp),tableFilp);
+        HelpUtilities.ValidateCheckNullValues(this,nameof(heartIconPrefab), heartIconPrefab);
     }
 #endif
     #endregion
