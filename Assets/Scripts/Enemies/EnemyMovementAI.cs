@@ -19,6 +19,7 @@ public class EnemyMovementAI : MonoBehaviour
     [HideInInspector] public float moveSpeed;
     private bool chasePlayer = false;
     [HideInInspector] public int updateFrameNumber = 1;
+    private List<Vector2Int> surroundingPositionList = new List<Vector2Int>();
 
     private void Awake()
     {
@@ -112,7 +113,8 @@ public class EnemyMovementAI : MonoBehaviour
         Vector2Int adjustedPlayerCellPosition = new Vector2Int(playerCellPosition.x - room.templateLowerBounds.x,playerCellPosition.y - 
             room.templateLowerBounds.y);
 
-        int obstacle = room.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x,adjustedPlayerCellPosition.y];
+        int obstacle = Mathf.Min(room.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x,adjustedPlayerCellPosition.y],
+            room.instantiatedRoom.aStartItemObstacles[adjustedPlayerCellPosition.x,adjustedPlayerCellPosition.y]);
 
         if(obstacle != 0)
         {
@@ -120,25 +122,60 @@ public class EnemyMovementAI : MonoBehaviour
         }
         else//如果玩家在障碍物上会导致无法生成路径，所以需要寻找一个最近的无障碍地块作为终点
         {
-            for(int i = -1; i <= 1; i++)
+            surroundingPositionList.Clear();
+
+            for(int i = -1;i<=1;i++)
             {
-                for(int j = -1; j <= 1; j++)
+                for(int j = -1;j<=1;j++)
                 {
-                    if (i == 0 && j == 0) continue;
-                    try
-                    {
-                        obstacle = room.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x + i, adjustedPlayerCellPosition.y + j];
-                        if( obstacle != 0 )
-                        {
-                            return new Vector3Int(playerCellPosition.x + i,playerCellPosition.y + j,0);
-                        }
-                    }
-                    catch
-                    {
-                        continue;
-                    }
+                    if (j == 0 && i == 0) continue;
+
+                    surroundingPositionList.Add(new Vector2Int(i, j));
                 }
             }
+
+            for(int l = 0;l < 8;l++)
+            {
+                int index = Random.Range(0, surroundingPositionList.Count);
+                try
+                {
+                    obstacle = Mathf.Min(room.instantiatedRoom.aStartItemObstacles[adjustedPlayerCellPosition.x + surroundingPositionList[index].x,
+                        adjustedPlayerCellPosition.y + surroundingPositionList[index].y], 
+                        room.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x+ surroundingPositionList[index].x,
+                        adjustedPlayerCellPosition.y + surroundingPositionList[index].y]);
+                    if(obstacle != 0)
+                    {
+                        return new Vector3Int(playerCellPosition.x + surroundingPositionList[index].x, playerCellPosition.y +
+                            surroundingPositionList[index].y,0);
+                    }
+                }
+                catch
+                {
+
+                }
+                surroundingPositionList.RemoveAt(index);
+            }
+            #region 注释代码
+            //for(int i = -1; i <= 1; i++)
+            //{
+            //    for(int j = -1; j <= 1; j++)
+            //    {
+            //        if (i == 0 && j == 0) continue;
+            //        try
+            //        {
+            //            obstacle = room.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x + i, adjustedPlayerCellPosition.y + j];
+            //            if( obstacle != 0 )
+            //            {
+            //                return new Vector3Int(playerCellPosition.x + i,playerCellPosition.y + j,0);
+            //            }
+            //        }
+            //        catch
+            //        {
+            //            continue;
+            //        }
+            //    }
+            //}
+            #endregion
             return playerCellPosition;
         }
     }
