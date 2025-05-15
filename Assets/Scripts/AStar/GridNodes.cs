@@ -33,7 +33,6 @@ public class GridNodes : MonoBehaviour
         }
         else
         {
-            Debug.Log("³¬³ö·¶Î§");
             return null;
         }
     }

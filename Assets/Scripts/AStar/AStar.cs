@@ -21,6 +21,8 @@ public static class AStar
 
         Node endPathNode = FindShortesPath(startNode, targetNode, gridNodes, openNodeList, closedNodeHashSet, room.instantiatedRoom);
 
+        //Debug.Log(endPathNode);
+
         if (endPathNode != null)
         {
             return CreatePathStack(endPathNode, room);
@@ -74,8 +76,6 @@ public static class AStar
 
                     int movementPenatlyForGridSpace = instantiatedRoom.aStarMovementPenalty[validNeighbourNode.gridPosition.x,
                         validNeighbourNode.gridPosition.y];
-
-
 
                     newCostToNeighbour = currentNode.gCost + GetDistance(currentNode, validNeighbourNode) + movementPenatlyForGridSpace;
                     

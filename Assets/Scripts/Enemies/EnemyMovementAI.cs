@@ -85,7 +85,7 @@ public class EnemyMovementAI : MonoBehaviour
 
         Vector3Int enemyGridPosition = grid.WorldToCell(transform.position);
 
-        Vector3Int playerGridPosition = GetNearestNonObstaclePlayerPosition(currentRoom); 
+        Vector3Int playerGridPosition = GetNearestNonObstaclePlayerPosition(currentRoom);
 
         movementSteps = AStar.BuildPath(currentRoom, enemyGridPosition, playerGridPosition);
 
@@ -95,6 +95,7 @@ public class EnemyMovementAI : MonoBehaviour
         }
         else
         {
+            Debug.Log("’“≤ªµΩ");
             enemy.idleEvent.CallIdleEvent();
         }
     }
@@ -176,7 +177,7 @@ public class EnemyMovementAI : MonoBehaviour
             //    }
             //}
             #endregion
-            return playerCellPosition;
+            return (Vector3Int)room.spawnPositionArray[Random.Range(0, room.spawnPositionArray.Length)];
         }
     }
 

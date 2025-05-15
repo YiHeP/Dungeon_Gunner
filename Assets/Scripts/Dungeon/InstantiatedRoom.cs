@@ -338,14 +338,14 @@ public class InstantiatedRoom : MonoBehaviour
     private void CreateItemObstaclesArray()
     {
         aStartItemObstacles = new int[room.templateUpperBounds.x - room.templateLowerBounds.x + 1,room.templateUpperBounds.y - 
-            room.templateLowerBounds.y + 1];
+            room.templateLowerBounds.y + 1];//创建数组
     }    
 
     private void InitializeItemObstaclesArray()
     {
-        for(int x = 0; x < (room.templateUpperBounds.x - room.templateUpperBounds.x + 1); x++)
+        for(int x = 0; x < (room.templateUpperBounds.x - room.templateLowerBounds.x + 1); x++)
         {
-            for(int y = 0;y < (room.templateUpperBounds.y -room.templateUpperBounds.y + 1);y++)
+            for(int y = 0;y < (room.templateUpperBounds.y -room.templateLowerBounds.y + 1);y++)
             {
                 aStartItemObstacles[x, y] = Settings.defaultAStarMovementPenalty;
             }
@@ -355,14 +355,14 @@ public class InstantiatedRoom : MonoBehaviour
     public void UpdateMoveableObstacles()
     {
         InitializeItemObstaclesArray();
-        foreach(MoveItem moveItem in moveableItemsList)
+        foreach (MoveItem moveItem in moveableItemsList)
         {
             Vector3Int colliderBoundsMin = grid.WorldToCell(moveItem.boxCollider2D.bounds.min);
             Vector3Int colliderBoundsMax = grid.WorldToCell(moveItem.boxCollider2D.bounds.max);
 
-            for(int i = colliderBoundsMin.x;i <= colliderBoundsMax.x;i++)
+            for (int i = colliderBoundsMin.x; i <= colliderBoundsMax.x; i++)
             {
-                for(int j = colliderBoundsMin.y;j <= colliderBoundsMax.y;j++)
+                for (int j = colliderBoundsMin.y; j <= colliderBoundsMax.y; j++)
                 {
                     aStartItemObstacles[i - room.templateLowerBounds.x, j - room.templateLowerBounds.y] = 0;
                 }

@@ -34,6 +34,7 @@ public class DestroyableItem : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         healthEvent = GetComponent<HealthEvent>();
         health = GetComponent<Health>();
+        health.SetStartingHealth(startingHealthAmount);
         receiveContactDamage = GetComponent<ReceiveContactDamage>();
     }
 
@@ -73,8 +74,8 @@ public class DestroyableItem : MonoBehaviour
 
         Destroy(animator);
         Destroy(receiveContactDamage);
-        Destroy(healthEvent);
         Destroy(health);
+        Destroy(healthEvent);
         Destroy(this);
     }
 }

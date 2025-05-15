@@ -25,7 +25,7 @@ public class DealContactDamage : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isColliding) return;
-
+        //Debug.Log("Åöµ½ÁË" + gameObject.name);
         ContactDamage(collision);
     }
 
