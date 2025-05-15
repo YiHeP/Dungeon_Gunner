@@ -39,19 +39,23 @@ public class Ammo : MonoBehaviour, IFireable
             isAmmoMaterialSet = true;
         }
 
-        Vector3 distanceVector = fireDirectionVector * ammoSpeed * Time.deltaTime;
-        transform.position += distanceVector;
-        ammoRange -= distanceVector.magnitude;
-
-        if(ammoRange < 0f)
+        if(!overrideAmmoMovement)
         {
-            if(ammoDetails.isPlayerAmmo)
-            {
-                StaticEventHandler.CallMultiplierEvent(false);
-            }
+            Vector3 distanceVector = fireDirectionVector * ammoSpeed * Time.deltaTime;
+            transform.position += distanceVector;
+            ammoRange -= distanceVector.magnitude;
 
-            DisableAmmo();
+            if (ammoRange < 0f)
+            {
+                if (ammoDetails.isPlayerAmmo)
+                {
+                    StaticEventHandler.CallMultiplierEvent(false);
+                }
+
+                DisableAmmo();
+            }
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -165,9 +169,9 @@ public class Ammo : MonoBehaviour, IFireable
 
     private void SetFireDirection(AmmoDetailSO ammoDetails, float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector)
     {
-        float randomSpread = Random.Range(ammoDetails.ammoSpreadMin, ammoDetails.ammoSpreadMax);
-        int spreadToggle = Random.Range(0, 2) * 2 - 1;
-        if(weaponAimDirectionVector.magnitude < Settings.useAimAngleDistance)
+        float randomSpread = Random.Range(ammoDetails.ammoSpreadMin, ammoDetails.ammoSpreadMax);//散射范围
+        int spreadToggle = Random.Range(0, 2) * 2 - 1;//随机的方向偏移因子，结果是 -1 或 1，表示向左或向右偏移
+        if (weaponAimDirectionVector.magnitude < Settings.useAimAngleDistance)//向量长度小于一定范围则使用玩家的瞄准角度
         {
             fireDirectionAngle = aimAngle;
         }
