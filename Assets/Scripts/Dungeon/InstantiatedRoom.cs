@@ -265,6 +265,8 @@ public class InstantiatedRoom : MonoBehaviour
                 {
                     doorComponent.isBossRoomDoor = true;
                     doorComponent.lockDoor();//玩家通过其他所有关卡才能打开boss房
+                    GameObject skullIcon = Instantiate(GameResources.Instance.miniMapSkullPrefab, gameObject.transform);
+                    skullIcon.transform.localPosition = door.transform.localPosition;
                 }
             }
         }

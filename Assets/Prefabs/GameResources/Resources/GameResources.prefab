@@ -66,3 +66,4 @@ MonoBehaviour:
   healthPickUp: {fileID: 11400000, guid: 2ec29fd32fd45d546b909a99f7f3f963, type: 2}
   ammoPickUp: {fileID: 11400000, guid: 48ab23cc064efc041ae593b01e72ef88, type: 2}
   weaponPickUp: {fileID: 11400000, guid: d71fd29645357a848a5f5e4985780782, type: 2}
+  miniMapSkullPrefab: {fileID: 7047572876318701977, guid: 379009adc5748894a8938c085cf1091f, type: 3}

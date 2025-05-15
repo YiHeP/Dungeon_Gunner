@@ -12,7 +12,7 @@ public static class StaticEventHandler
         OnRoomChanged?.Invoke(new RoomChangedEventArgs(){ room = room });
     }
 
-    public static event Action<RoomEnemiesDefeatedArgs> OnRoomEnemiesDefeated;
+    public static event Action<RoomEnemiesDefeatedArgs> OnRoomEnemiesDefeated;//是否将怪物清空
 
     public static void CallRoomEnemiesDefeatedEvent(Room room)
     {

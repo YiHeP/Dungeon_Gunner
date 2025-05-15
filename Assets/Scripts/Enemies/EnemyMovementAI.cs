@@ -95,7 +95,6 @@ public class EnemyMovementAI : MonoBehaviour
         }
         else
         {
-            Debug.Log("’“≤ªµΩ");
             enemy.idleEvent.CallIdleEvent();
         }
     }

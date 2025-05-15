@@ -148,6 +148,16 @@ public class GameResources : MonoBehaviour
     #endregion
     public SoundEffectSO weaponPickUp;
 
+    #region Header 小地图
+    [Space(10)]
+    [Header("小地图")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("小地图上的骷髅图标")]
+    #endregion
+    public GameObject miniMapSkullPrefab; 
+
     #region Validation
 #if UNITY_EDITOR
     public void OnValidate()
@@ -171,6 +181,7 @@ public class GameResources : MonoBehaviour
         HelpUtilities.ValidateCheckNullValues(this, nameof(chestItemPerfab), chestItemPerfab);
         HelpUtilities.ValidateCheckNullValues(this, nameof(heartIcon), heartIcon);
         HelpUtilities.ValidateCheckNullValues(this, nameof(bulletIcon), bulletIcon);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(miniMapSkullPrefab), miniMapSkullPrefab);
     }
 #endif
     #endregion

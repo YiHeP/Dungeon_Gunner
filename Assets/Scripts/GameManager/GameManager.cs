@@ -50,6 +50,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private long gameScore;
     private int scoreMultiplier;
     private InstantiatedRoom bossRoom;
+    private bool isFading = false;
 
     protected override void Awake()
     {
@@ -176,11 +177,31 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             case GameState.restartGame:
                 RestartGame();
                 break;
+            case GameState.playingLevel:
+                if(Input.GetKeyDown(KeyCode.M))
+                {
+                    DisPlayDungeonOverviewMap();
+                }
+                break;
+            case GameState.dungeonOverviewMap:
+                if(Input.GetKeyDown(KeyCode.M))
+                {
+                    DungeonMap.Instance.ClearDungeonOverViewMap();
+                }
+                break;
+            case GameState.bossStage:
+                if (Input.GetKeyDown(KeyCode.M))
+                {
+                    DisPlayDungeonOverviewMap();
+                }
+                break;
         }
     }
 
     private IEnumerator Fade(float startFadeAlpha,  float endFadeAlpha, float fadeSeconds,Color color)
     {
+        isFading = true;
+
         Image image = canvasGroup.GetComponent<Image>();
         image.color = color;
 
@@ -191,6 +212,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             canvasGroup.alpha = Mathf.Lerp(startFadeAlpha, endFadeAlpha, time/fadeSeconds);
             yield return null;
         }
+        isFading= false;
     }
 
     public void SetCurrentRoom(Room room)
@@ -304,6 +326,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
             StartCoroutine(BossStage());
         }
+    }
+
+    private void DisPlayDungeonOverviewMap()
+    {
+        if (isFading) return;
+        DungeonMap.Instance.DisPlayDungeonOverViewMap();
     }
 
     public Room GetCurrentRoom()
