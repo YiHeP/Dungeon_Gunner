@@ -145,4 +145,20 @@ public class Health : MonoBehaviour
         isDamageable = true;
     }
 
+    public void AddHealth(int healthPercent)
+    {
+        int healthIncrease = Mathf.RoundToInt((startingHealth * healthPercent) / 100f);
+        int totalHealth = currentHealth + healthIncrease;
+
+        if(totalHealth > startingHealth)
+        {
+            currentHealth = startingHealth;
+        }
+        else
+        {
+            currentHealth = totalHealth;
+        }
+        CallHealthEvent(0);
+    }
+
 }

@@ -57,6 +57,11 @@ public class GameResources : MonoBehaviour
     #endregion
     public Shader variableLitShader;
 
+    #region Tooltip
+    [Tooltip("填入materialize着色器")]
+    #endregion
+    public Shader materializeShader;
+
     #region Header 特殊瓦片地图的瓦片
     [Space(10)]
     [Header("特殊瓦片地图的瓦片")]
@@ -84,6 +89,26 @@ public class GameResources : MonoBehaviour
     #endregion
     public GameObject heartIconPrefab;
 
+    #region Header 宝箱
+    [Space(10)]
+    [Header("宝箱")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("宝箱物品预制体")]
+    #endregion
+    public GameObject chestItemPerfab;
+
+    #region Tooltip
+    [Tooltip("填入生命值图标")]
+    #endregion
+    public Sprite heartIcon;
+
+    #region Tooltip
+    [Tooltip("填入子弹图标")]
+    #endregion
+    public Sprite bulletIcon;
+
     #region Header 声音
     [Space(10)]
     [Header("声音")]
@@ -103,6 +128,26 @@ public class GameResources : MonoBehaviour
     #endregion
     public SoundEffectSO tableFilp;
 
+    #region Tooltip
+    [Tooltip("宝箱打开的音效")]
+    #endregion
+    public SoundEffectSO chestOpen;
+
+    #region Tooltip
+    [Tooltip("生命值拾取音效")]
+    #endregion
+    public SoundEffectSO healthPickUp;
+
+    #region Tooltip
+    [Tooltip("子弹拾取音效")]
+    #endregion
+    public SoundEffectSO ammoPickUp;
+
+    #region Tooltip
+    [Tooltip("武器拾取音效")]
+    #endregion
+    public SoundEffectSO weaponPickUp;
+
     #region Validation
 #if UNITY_EDITOR
     public void OnValidate()
@@ -118,6 +163,14 @@ public class GameResources : MonoBehaviour
         HelpUtilities.ValidateCheckNullValues(this, nameof(perferredEnemyPathTile), perferredEnemyPathTile);
         HelpUtilities.ValidateCheckNullValues(this,nameof(tableFilp),tableFilp);
         HelpUtilities.ValidateCheckNullValues(this,nameof(heartIconPrefab), heartIconPrefab);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(chestOpen), chestOpen);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(healthPickUp), healthPickUp);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(ammoPickUp), ammoPickUp);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(weaponPickUp), weaponPickUp);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(materializeShader), materializeShader);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(chestItemPerfab), chestItemPerfab);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(heartIcon), heartIcon);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(bulletIcon), bulletIcon);
     }
 #endif
     #endregion

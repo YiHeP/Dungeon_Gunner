@@ -49,12 +49,20 @@ MonoBehaviour:
   dimmedMaterial: {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
   litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   variableLitShader: {fileID: -6465566751694194690, guid: 7f02559436836d248ae39aaac3f41b95, type: 3}
+  materializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
   enemyUnwalkableCollisionTilesArray:
   - {fileID: 11400000, guid: 37e2c9e0227bfbc409cd632b9bd0c81f, type: 2}
   - {fileID: 11400000, guid: 98f177f8276c38b429705e6720c48672, type: 2}
   perferredEnemyPathTile: {fileID: 11400000, guid: 3ce5fb260af53d24887b55c3d50041e2, type: 2}
   ammoIconPrefab: {fileID: 1553259906665990448, guid: 61992afe2c88e454daa078adadf43b48, type: 3}
   heartIconPrefab: {fileID: 8225592499083880039, guid: 2cd2e69f80bb9b543ad73d368c662946, type: 3}
+  chestItemPerfab: {fileID: 4295423019100484550, guid: f58e3ffc71c45c443beb2c66fc717304, type: 3}
+  heartIcon: {fileID: 21300000, guid: 93356131eec0f44458223985928ac6e3, type: 3}
+  bulletIcon: {fileID: 21300000, guid: a2482871b46d396438236c07b6402283, type: 3}
   soundMasterMixrGroup: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   doorOpenCloseSoundEffect: {fileID: 11400000, guid: ba90c7f74caef1e40954c77955069cc9, type: 2}
   tableFilp: {fileID: 11400000, guid: 06ccff1be6caffd478d4a121141f840d, type: 2}
+  chestOpen: {fileID: 11400000, guid: df56370d3fee617478fda7036a00505a, type: 2}
+  healthPickUp: {fileID: 11400000, guid: 2ec29fd32fd45d546b909a99f7f3f963, type: 2}
+  ammoPickUp: {fileID: 11400000, guid: 48ab23cc064efc041ae593b01e72ef88, type: 2}
+  weaponPickUp: {fileID: 11400000, guid: d71fd29645357a848a5f5e4985780782, type: 2}
