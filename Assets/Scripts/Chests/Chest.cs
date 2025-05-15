@@ -46,7 +46,7 @@ public class Chest : MonoBehaviour, IUseable
         messageTextTMP = GetComponent<TextMeshPro>();
     }
 
-    private void Initialize(bool shouldMaterialize, int healthPercent, WeaponsDetailsSO weaponsDetails, int ammoPercent)
+    public void Initialize(bool shouldMaterialize, int healthPercent, WeaponsDetailsSO weaponsDetails, int ammoPercent)
     {
         this.healthPercent = healthPercent;
         this.weaponDetails = weaponsDetails;
