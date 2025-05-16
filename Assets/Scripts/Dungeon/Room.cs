@@ -13,6 +13,8 @@ public class Room
     public Vector2Int templateLowerBounds;//模板房间的左下角坐标，相对于模板本身的局部坐标系
     public Vector2Int templateUpperBounds;
     public Vector2Int[] spawnPositionArray;
+    public MusicTrackSO battleMusic;
+    public MusicTrackSO ambientMusic;
     public List<SpawnableObjectByLevel<EnemyDetailsSO>> enemiesByLevelList;
     public List<RoomEnemySpawnParameters> roomEnemySpawnParametersList;
     public List<string> childRoomIdList;

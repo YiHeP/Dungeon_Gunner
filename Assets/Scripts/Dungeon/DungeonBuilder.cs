@@ -395,6 +395,8 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
         room.templateUpperBounds = roomTemplate.upperBounds;
         room.enemiesByLevelList = roomTemplate.enemiesByLevelList;
         room.roomEnemySpawnParametersList = roomTemplate.roomEnemySpawnParameterList;
+        room.battleMusic = roomTemplate.battleMusic;
+        room.ambientMusic = roomTemplate.ambientMusic;
 
         room.childRoomIdList = CopyStringList(roomNode.childRoomNodeIDList);
         room.doorWayList = CopyDoowWayList(roomTemplate.doorwayList);

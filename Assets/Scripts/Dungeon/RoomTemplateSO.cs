@@ -86,6 +86,20 @@ public class RoomTemplateSO : ScriptableObject
     #endregion
     public List<RoomEnemySpawnParameters> roomEnemySpawnParameterList;
 
+    #region Header 房间音乐
+    [Space(10)]
+    [Header("房间音乐")]
+    #endregion
+
+    #region Tooltip 环境音乐
+    [Tooltip("填入房间环境音乐")]
+    #endregion
+    public MusicTrackSO ambientMusic;
+
+    #region Tooltip 环境音乐
+    [Tooltip("填入房间战斗音乐")]
+    #endregion
+    public MusicTrackSO battleMusic;
 
     public List<Doorway> GetDoorwayList()
     {
@@ -109,6 +123,8 @@ public class RoomTemplateSO : ScriptableObject
 
         HelpUtilities.ValidateCheckNullValues(this, nameof(prefab), prefab);
         HelpUtilities.ValidateCheckNullValues(this, nameof(roomNodeType), roomNodeType);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(battleMusic),battleMusic);
+        HelpUtilities.ValidateCheckNullValues(this,nameof(ambientMusic),ambientMusic);
 
         HelpUtilities.ValidateCheckEnumerableValues(this, nameof(doorwayList), doorwayList);
 
