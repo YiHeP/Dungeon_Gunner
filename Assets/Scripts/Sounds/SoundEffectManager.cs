@@ -9,6 +9,9 @@ public class SoundEffectManager : SingletonMonobehaviour<SoundEffectManager>
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("soundsVolume"))
+            soundsVolume = PlayerPrefs.GetInt("soundsVolume");
+
         SetSoundVolume(soundsVolume);
     }
 
@@ -61,6 +64,11 @@ public class SoundEffectManager : SingletonMonobehaviour<SoundEffectManager>
         soundsVolume -= 1;
 
         SetSoundVolume(soundsVolume);
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetInt("soundsVolume", soundsVolume);
     }
 
 }

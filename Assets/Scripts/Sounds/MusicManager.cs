@@ -22,6 +22,9 @@ public class MusicManager : SingletonMonobehaviour<MusicManager>
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("musicVolume"))
+            musicVolume = PlayerPrefs.GetInt("musicVolume");
+
         SetMusicVolume(musicVolume);
     }
 
@@ -107,4 +110,8 @@ public class MusicManager : SingletonMonobehaviour<MusicManager>
         }    
     }
 
+    private void OnDisable()
+    {
+        PlayerPrefs.SetInt("musicVolume", musicVolume);
+    }
 }
