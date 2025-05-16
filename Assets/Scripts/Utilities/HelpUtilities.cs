@@ -201,6 +201,21 @@ public class HelpUtilities
         return error;
     }
 
+    public static bool ValidateCheckPositiveRange(Object thisObject, string filenameMinMum, int valueToCheckMinMum, string filenameMaxMum,
+    int valueToCheckMaxMum, bool isZeroAllowed)
+    {
+        bool error = false;
+        if (valueToCheckMinMum > valueToCheckMaxMum)
+        {
+            Debug.Log(filenameMinMum + "必须小于或等于" + filenameMaxMum + "在物体" + thisObject.name.ToString());
+        }
+
+        if (ValidateCheckPositiveValues(thisObject, filenameMinMum, valueToCheckMinMum, isZeroAllowed)) error = true;
+        if (ValidateCheckPositiveValues(thisObject, filenameMaxMum, valueToCheckMaxMum, isZeroAllowed)) error = true;
+
+        return error;
+    }
+
     public static Vector3 GetSpawnPositionNearestToPlayer(Vector3 playerPosition)
     {
         Room currentRoom = GameManager.Instance.GetCurrentRoom();

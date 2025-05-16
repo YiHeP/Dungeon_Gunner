@@ -198,7 +198,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         }
     }
 
-    private IEnumerator Fade(float startFadeAlpha,  float endFadeAlpha, float fadeSeconds,Color color)
+    public IEnumerator Fade(float startFadeAlpha,  float endFadeAlpha, float fadeSeconds,Color color)
     {
         isFading = true;
 

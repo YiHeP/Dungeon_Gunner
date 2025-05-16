@@ -32,6 +32,54 @@ public class DungeonMap : SingletonMonobehaviour<DungeonMap>
         dungeonMapCamera.gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0) && GameManager.Instance.gameState == GameState.dungeonOverviewMap)
+        {
+            GetRoomClick();
+        }
+    }
+
+    private void GetRoomClick()
+    {
+        Vector3 worldPositoin = dungeonMapCamera.ScreenToWorldPoint(Input.mousePosition);
+        worldPositoin = new Vector3(worldPositoin.x, worldPositoin.y, 0);
+
+        Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(new Vector2(worldPositoin.x, worldPositoin.y), 1f);
+
+        foreach(Collider2D collider in collider2DArray)
+        {
+            if(collider.GetComponent<InstantiatedRoom>() != null)
+            {
+                InstantiatedRoom instantiatedRoom = collider.GetComponent<InstantiatedRoom>();
+
+                if(instantiatedRoom.room.isCleanedOfEnemies && instantiatedRoom.room.isPreviouslyVisited)
+                {
+                    StartCoroutine(MovePlayerToRoom(worldPositoin, instantiatedRoom.room));
+                }
+            }
+        }
+     }
+
+    private IEnumerator MovePlayerToRoom(Vector3 worldPositoin,Room room)
+    {
+        StaticEventHandler.CallRoomChangedEvent(room);
+
+        yield return StartCoroutine(GameManager.Instance.Fade(0f, 1f, 0f, Color.black));
+
+        ClearDungeonOverViewMap();
+
+        GameManager.Instance.GetPlayer().playerControl.DisablePlayerControl();
+
+        Vector3 spawnPosition = HelpUtilities.GetSpawnPositionNearestToPlayer(worldPositoin);
+
+        GameManager.Instance.GetPlayer().transform.position = spawnPosition;
+
+        yield return StartCoroutine(GameManager.Instance.Fade(1f,0f,1f,Color.black));
+
+        GameManager.Instance.GetPlayer().playerControl.EnablePlayerControl();
+    }
+
     public void DisPlayDungeonOverViewMap()
     {
         GameManager.Instance.previousGameState = GameManager.Instance.gameState;
