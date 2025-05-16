@@ -85,4 +85,8 @@ public static class Settings
     #region 接触伤害参数
     public const float contactDamageCollisionResetDelay = 0.5f;
     #endregion
+
+    #region 高分
+    public const int numberOfHighScoresToSave = 100;
+    #endregion
 }

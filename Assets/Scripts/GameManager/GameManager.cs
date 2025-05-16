@@ -53,7 +53,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     [HideInInspector] public GameState gameState;
     [HideInInspector] public GameState previousGameState;
-    private long gameScore;
+    public long gameScore;
     private int scoreMultiplier;
     private InstantiatedRoom bossRoom;
     private bool isFading = false;
@@ -447,12 +447,41 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         GetPlayer().playerControl.DisablePlayerControl();
 
+        int rank = HighScoreManager.Instance.GetRank(gameScore);
+
+        string rankText;
+
+        if(rank > 0 && rank <= Settings.numberOfHighScoresToSave)
+        {
+            rankText = "你的得分排名为：" + rank.ToString("#0") + "名，位列前" + Settings.numberOfHighScoresToSave.ToString("#0")+"名之中";
+
+            string name = GameResources.Instance.currentPlayer.playerName;
+
+            if(name == "")
+            {
+                name = playerDetails.playerCharacterName;
+            }
+
+            HighScoreManager.Instance.AddScore(new Score()
+            {
+                playerName = name,
+                levelDescription = "Level" + (currentDungeonLevelListIndex + 1).ToString() + " - " + GetCurrentDungeonLevel().levelName,
+                playerScore = gameScore
+            },rank);
+        }
+        else
+        {
+            rankText = "你的得分低于前" + Settings.numberOfHighScoresToSave.ToString("#0") + "名之中";
+        }
+
+        yield return new WaitForSeconds(1f);
+
         yield return StartCoroutine(Fade(0f, 1f, 2f, Color.black));
 
         yield return StartCoroutine(DisplayMessageRoutine("恭喜你" + GameResources.Instance.currentPlayer.playerName + "!\n\n" +
             "你成功的从地牢中撤离！", Color.white, 3f));
 
-        yield return StartCoroutine(DisplayMessageRoutine("你的得分为："+ gameScore.ToString("###,##0"), Color.white, 4f));
+        yield return StartCoroutine(DisplayMessageRoutine("你的得分为："+ gameScore.ToString("###,##0") + "\n\n" + rankText, Color.white, 4f));
 
         yield return StartCoroutine(DisplayMessageRoutine("按下Return键重新开始游戏", Color.white, 0f));
 
@@ -464,6 +493,33 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         previousGameState = GameState.gameLost;
 
         GetPlayer().playerControl.DisablePlayerControl();
+
+        int rank = HighScoreManager.Instance.GetRank(gameScore);
+
+        string rankText;
+
+        if (rank > 0 && rank <= Settings.numberOfHighScoresToSave)
+        {
+            rankText = "你的得分排名为：" + rank.ToString("#0") + "名，位列前" + Settings.numberOfHighScoresToSave.ToString("#0") + "名之中";
+
+            string name = GameResources.Instance.currentPlayer.playerName;
+
+            if (name == "")
+            {
+                name = playerDetails.playerCharacterName;
+            }
+
+            HighScoreManager.Instance.AddScore(new Score()
+            {
+                playerName = name,
+                levelDescription = "Level" + (currentDungeonLevelListIndex + 1).ToString() + " - " + GetCurrentDungeonLevel().levelName,
+                playerScore = gameScore
+            }, rank);
+        }
+        else
+        {
+            rankText = "你的得分低于前" + Settings.numberOfHighScoresToSave.ToString("#0") + "名之中";
+        }
 
         yield return new WaitForSeconds(1f);
 
@@ -479,7 +535,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         yield return StartCoroutine(DisplayMessageRoutine("非常遗憾" + GameResources.Instance.currentPlayer.playerName + "!\n\n" +
             "你于地牢之中陨落！", Color.white, 3f));
 
-        yield return StartCoroutine(DisplayMessageRoutine("你的得分为：" + gameScore.ToString("###,##0"), Color.white, 4f));
+        yield return StartCoroutine(DisplayMessageRoutine("你的得分为：" + gameScore.ToString("###,##0") + "\n\n" + rankText, Color.white, 4f));
 
         yield return StartCoroutine(DisplayMessageRoutine("按下Return键重新开始游戏", Color.white, 0f));
 

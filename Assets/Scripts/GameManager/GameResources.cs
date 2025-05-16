@@ -89,6 +89,11 @@ public class GameResources : MonoBehaviour
     #endregion
     public GameObject heartIconPrefab;
 
+    #region Tooltip
+    [Tooltip("得分预制体")]
+    #endregion
+    public GameObject scorePrefab;
+
     #region Header 宝箱
     [Space(10)]
     [Header("宝箱")]
@@ -188,6 +193,21 @@ public class GameResources : MonoBehaviour
     #endregion
     public MusicTrackSO mainMenuMusic;
 
+    #region Header 玩家选择
+    [Space(10)]
+    [Header("玩家选择")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("玩家选择的预制体")]
+    #endregion
+    public GameObject playerSelectionPrefab;
+
+    #region Tooltip
+    [Tooltip("填入玩家细节列表")]
+    #endregion
+    public List<PlayerDetailsSO> playerDetailsList;
+
     #region Validation
 #if UNITY_EDITOR
     public void OnValidate()
@@ -217,6 +237,9 @@ public class GameResources : MonoBehaviour
         HelpUtilities.ValidateCheckNullValues(this, nameof(musicLoweSnapshot), musicLoweSnapshot);
         HelpUtilities.ValidateCheckNullValues(this, nameof(musicOffSnapshot), musicOffSnapshot);
         HelpUtilities.ValidateCheckNullValues(this, nameof(mainMenuMusic), mainMenuMusic);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(playerSelectionPrefab), playerSelectionPrefab);
+        HelpUtilities.ValidateCheckEnumerableValues(this, nameof(playerDetailsList), playerDetailsList);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(scorePrefab), scorePrefab);
     }
 #endif
     #endregion

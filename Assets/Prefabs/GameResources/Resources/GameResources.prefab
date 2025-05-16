@@ -56,6 +56,7 @@ MonoBehaviour:
   perferredEnemyPathTile: {fileID: 11400000, guid: 3ce5fb260af53d24887b55c3d50041e2, type: 2}
   ammoIconPrefab: {fileID: 1553259906665990448, guid: 61992afe2c88e454daa078adadf43b48, type: 3}
   heartIconPrefab: {fileID: 8225592499083880039, guid: 2cd2e69f80bb9b543ad73d368c662946, type: 3}
+  scorePrefab: {fileID: 81214218770876894, guid: b9d6289c445e62243988cbf8256f9f7a, type: 3}
   chestItemPerfab: {fileID: 4295423019100484550, guid: f58e3ffc71c45c443beb2c66fc717304, type: 3}
   heartIcon: {fileID: 21300000, guid: 93356131eec0f44458223985928ac6e3, type: 3}
   bulletIcon: {fileID: 21300000, guid: a2482871b46d396438236c07b6402283, type: 3}
@@ -72,3 +73,8 @@ MonoBehaviour:
   musicLoweSnapshot: {fileID: 8893122114324796974, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicOffSnapshot: {fileID: -3084740370723268673, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   mainMenuMusic: {fileID: 11400000, guid: 00501640044696749b6a82dd11fd35a0, type: 2}
+  playerSelectionPrefab: {fileID: 7138205872125498389, guid: 24a6a366d5a93e34bad9a2b3b900f89a, type: 3}
+  playerDetailsList:
+  - {fileID: 11400000, guid: 067725e8d53263b42afd71a0bf51e75c, type: 2}
+  - {fileID: 11400000, guid: 0add2c44398211e4a9b3a108a9548b37, type: 2}
+  - {fileID: 11400000, guid: 823a2718c28b4ed4392c58acdab24f37, type: 2}
