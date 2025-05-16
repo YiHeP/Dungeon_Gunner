@@ -8,10 +8,16 @@ using UnityEngine.SceneManagement;
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
-    #region Header 物品参考
+
+    #region Header 物品引用
     [Space(10)]
-    [Header("物品参考")]
+    [Header("物品引用")]
     #endregion
+
+    #region Tooltip
+    [Tooltip("填入暂停菜单的物品")]
+    #endregion
+    [SerializeField] private GameObject psuseMenu;
 
     #region Tooltip
     [Tooltip("填入fadeScreen中的messageText")]
@@ -182,6 +188,11 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                 {
                     DisPlayDungeonOverviewMap();
                 }
+
+                if(Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseGameMenu();
+                }
                 break;
             case GameState.dungeonOverviewMap:
                 if(Input.GetKeyDown(KeyCode.M))
@@ -189,10 +200,33 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                     DungeonMap.Instance.ClearDungeonOverViewMap();
                 }
                 break;
+            case GameState.engagingEnemies:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseGameMenu();
+                }
+                break;
             case GameState.bossStage:
                 if (Input.GetKeyDown(KeyCode.M))
                 {
                     DisPlayDungeonOverviewMap();
+                }
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseGameMenu();
+                }
+                break;
+            case GameState.engagingBoss:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseGameMenu();
+                }
+                break;
+            case GameState.gamePaused:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseGameMenu();
                 }
                 break;
         }
@@ -334,6 +368,26 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         DungeonMap.Instance.DisPlayDungeonOverViewMap();
     }
 
+    public void PauseGameMenu()
+    {
+        if(gameState != GameState.gamePaused)
+        {
+            psuseMenu.SetActive(true); 
+            GetPlayer().playerControl.DisablePlayerControl();
+
+            previousGameState = gameState;
+            gameState = GameState.gamePaused;
+        }
+        else if(gameState == GameState.gamePaused)
+        {
+            psuseMenu.SetActive(false);
+            GetPlayer().playerControl.EnablePlayerControl();
+
+            gameState = previousGameState;
+            previousGameState = GameState.gamePaused;
+        }
+    }
+
     public Room GetCurrentRoom()
     {
         return currentRoom;
@@ -445,7 +499,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         HelpUtilities.ValidateCheckEnumerableValues(this, nameof(dungeonLevelList), dungeonLevelList);
         HelpUtilities.ValidateCheckNullValues(this,nameof(messageTextTMP), messageTextTMP);
         HelpUtilities.ValidateCheckNullValues(this,nameof(canvasGroup),canvasGroup);
-
+        HelpUtilities.ValidateCheckNullValues(this, nameof(psuseMenu), psuseMenu);
     }
 
 #endif
