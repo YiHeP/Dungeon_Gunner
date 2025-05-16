@@ -67,3 +67,7 @@ MonoBehaviour:
   ammoPickUp: {fileID: 11400000, guid: 48ab23cc064efc041ae593b01e72ef88, type: 2}
   weaponPickUp: {fileID: 11400000, guid: d71fd29645357a848a5f5e4985780782, type: 2}
   miniMapSkullPrefab: {fileID: 7047572876318701977, guid: 379009adc5748894a8938c085cf1091f, type: 3}
+  musicMasterMixerGroup: {fileID: -7206380732494497733, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
+  musicOnFullSnapshot: {fileID: 24500006, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
+  musicLoweSnapshot: {fileID: 8893122114324796974, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
+  musicOffSnapshot: {fileID: -3084740370723268673, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}

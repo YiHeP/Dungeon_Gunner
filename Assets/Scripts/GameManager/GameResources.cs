@@ -156,7 +156,32 @@ public class GameResources : MonoBehaviour
     #region Tooltip
     [Tooltip("小地图上的骷髅图标")]
     #endregion
-    public GameObject miniMapSkullPrefab; 
+    public GameObject miniMapSkullPrefab;
+
+    #region Header 音乐
+    [Space(10)]
+    [Header("音乐")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("填入音乐控制组")]
+    #endregion
+    public AudioMixerGroup musicMasterMixerGroup;
+
+    #region Tooltip
+    [Tooltip("填入音乐完整快照")]
+    #endregion
+    public AudioMixerSnapshot musicOnFullSnapshot;
+
+    #region Tooltip
+    [Tooltip("填入音乐低快照")]
+    #endregion
+    public AudioMixerSnapshot musicLoweSnapshot;
+
+    #region Tooltip
+    [Tooltip("填入音乐关闭快照")]
+    #endregion
+    public AudioMixerSnapshot musicOffSnapshot;
 
     #region Validation
 #if UNITY_EDITOR
@@ -182,6 +207,10 @@ public class GameResources : MonoBehaviour
         HelpUtilities.ValidateCheckNullValues(this, nameof(heartIcon), heartIcon);
         HelpUtilities.ValidateCheckNullValues(this, nameof(bulletIcon), bulletIcon);
         HelpUtilities.ValidateCheckNullValues(this, nameof(miniMapSkullPrefab), miniMapSkullPrefab);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(musicMasterMixerGroup), musicMasterMixerGroup);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(musicOnFullSnapshot), musicOnFullSnapshot);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(musicLoweSnapshot), musicLoweSnapshot);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(musicOffSnapshot), musicOffSnapshot);
     }
 #endif
     #endregion
