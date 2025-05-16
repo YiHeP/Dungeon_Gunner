@@ -71,6 +71,28 @@ public class MusicManager : SingletonMonobehaviour<MusicManager>
         yield return new WaitForSeconds(fadeInTime);
     }
 
+    public void IncreaseMusicVolume()
+    {
+        int maxMusicVoulme = 20;
+
+        if(musicVolume >= maxMusicVoulme)
+        {
+            return;
+        }
+
+        musicVolume += 1;
+        SetMusicVolume(musicVolume);
+    }
+
+    public void DecreaseMusicVolume()
+    {
+        if (musicVolume == 0) return;
+
+        musicVolume -= 1;
+
+        SetMusicVolume(musicVolume);
+    }
+
     private void SetMusicVolume(int volume)
     {
         float muteDecibels = -80f;
