@@ -183,6 +183,11 @@ public class GameResources : MonoBehaviour
     #endregion
     public AudioMixerSnapshot musicOffSnapshot;
 
+    #region Tooltip
+    [Tooltip("填入主界面音乐")]
+    #endregion
+    public MusicTrackSO mainMenuMusic;
+
     #region Validation
 #if UNITY_EDITOR
     public void OnValidate()
@@ -211,6 +216,7 @@ public class GameResources : MonoBehaviour
         HelpUtilities.ValidateCheckNullValues(this, nameof(musicOnFullSnapshot), musicOnFullSnapshot);
         HelpUtilities.ValidateCheckNullValues(this, nameof(musicLoweSnapshot), musicLoweSnapshot);
         HelpUtilities.ValidateCheckNullValues(this, nameof(musicOffSnapshot), musicOffSnapshot);
+        HelpUtilities.ValidateCheckNullValues(this, nameof(mainMenuMusic), mainMenuMusic);
     }
 #endif
     #endregion

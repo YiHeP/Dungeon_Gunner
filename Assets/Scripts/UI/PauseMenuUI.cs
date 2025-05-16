@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement; 
 
 public class PauseMenuUI : MonoBehaviour
 {
@@ -66,6 +67,11 @@ public class PauseMenuUI : MonoBehaviour
         SoundEffectManager.Instance.DecreaseSoundVolume();
 
         soundLevelText.SetText(SoundEffectManager.Instance.soundsVolume.ToString());
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     #region Validation

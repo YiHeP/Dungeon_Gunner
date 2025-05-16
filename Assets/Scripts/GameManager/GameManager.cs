@@ -488,7 +488,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private void RestartGame()
     {
-        SceneManager.LoadScene("MainGameScene");
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     #region Validation
